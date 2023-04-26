@@ -10,21 +10,32 @@ import { useState } from "react";
 
 export default function HomePage() {
   const [moodText, setMoodText] = useState("");
+  const [moodNumber, setMoodNumber] = useState("5");
 
-  const handleMoodTextChange = () => {};
+  const handleMoodTextChange = (e) => {
+    setMoodText(e.target.value);
+  };
+
+  const handleMoodNumberChange = (e) => {
+    setMoodNumber(e.target.value);
+  };
 
   return (
     <>
       <Container align="center" sx={{ padding: "1rem" }}>
-        <InputLabel id="mood-text">How are you feel today?</InputLabel>
-        <Rating name="customized-10" defaultValue={5} max={10} />
+        <InputLabel id="mood-number">How are you feel today?</InputLabel>
+        <Rating
+          labelid="mood-number"
+          defaultValue={5}
+          max={10}
+          onChange={handleMoodNumberChange}
+        />
       </Container>
 
       <Container align="center" sx={{ padding: "1rem" }}>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="mood-text">What happened with you today?</InputLabel>
           <TextField
-            labelid="mood-text"
+            label="What happened with you today?"
             id="mood-text"
             value={moodText}
             onChange={handleMoodTextChange}
