@@ -20,6 +20,8 @@ export default function HomePage() {
     setMoodNumber(e.target.value);
   };
 
+  const handleSumbit = () => {};
+
   return (
     <>
       <Container align="center" sx={{ padding: "1rem" }}>
@@ -43,7 +45,9 @@ export default function HomePage() {
         </FormControl>
       </Container>
       <Container align="center" sx={{ padding: "1rem" }}>
-        <Button align="center">Send</Button>
+        <Button align="center" onClick={handleSumbit}>
+          Send
+        </Button>
       </Container>
     </>
   );

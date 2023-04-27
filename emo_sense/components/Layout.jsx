@@ -19,7 +19,7 @@ export default function Layout() {
             }}
             onClick={() => navigate("/")}
           >
-            EmoSence
+            EmoSense
           </Typography>
         </Toolbar>
       </AppBar>
