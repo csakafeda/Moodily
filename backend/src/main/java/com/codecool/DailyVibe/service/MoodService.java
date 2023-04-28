@@ -1,6 +1,5 @@
 package com.codecool.DailyVibe.service;
 
-import com.codecool.DailyVibe.controller.MoodRequestDTO;
 import com.codecool.DailyVibe.database.Mood;
 import com.codecool.DailyVibe.database.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import java.util.List;
 @Service
 public class MoodService {
 
-    private MoodRepository moodRepository;
+    private final MoodRepository moodRepository;
 
     @Autowired
     public MoodService(MoodRepository moodRepository) {

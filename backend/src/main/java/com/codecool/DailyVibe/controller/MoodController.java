@@ -2,7 +2,6 @@ package com.codecool.DailyVibe.controller;
 
 import com.codecool.DailyVibe.database.Mood;
 import com.codecool.DailyVibe.service.MoodService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
