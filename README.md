@@ -1,8 +1,5 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![LinkedIn-csakafeda][linkedin-shield-csakafeda]][linkedin-url-csakafeda]
+[![Issues][issues-shield]][issues-url]
 
 # EmoSense
 
@@ -29,14 +26,8 @@ The idea was, that the people dont really live in the now, more like in the past
 
 [linkedin-shield-csakafeda]: https://img.shields.io/badge/-Feodóra%20Bakó-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-csakafeda]: https://www.linkedin.com/in/feodorabako/
-[contributors-shield]: https://img.shields.io/github/contributors/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda.svg?style=for-the-badge
-[contributors-url]: https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda.svg?style=for-the-badge
-[forks-url]: https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda/network/members
-[stars-shield]: https://img.shields.io/github/stars/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda.svg?style=for-the-badge
-[stars-url]: https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda.svg?style=for-the-badge
-[issues-url]: https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-csakafeda/issues
+[issues-shield]: https://img.shields.io/github/issues/csakafeda/EmoSense.svg?style=for-the-badge
+[issues-url]:https://github.com/users/csakafeda/projects/2
 [Spring-badge]: https://img.shields.io/badge/Spring-20232A?style=for-the-badge&logo=spring
 [Spring-url]: https://spring.io/
 [SpringBoot-badge]: https://img.shields.io/badge/Spring%20Boot-20232A?style=for-the-badge&logo=springboot
