@@ -1,5 +1,4 @@
 [![LinkedIn-csakafeda][linkedin-shield-csakafeda]][linkedin-url-csakafeda]
-[![Issues][issues-shield]][issues-url]
 
 # EmoSense
 
@@ -26,8 +25,6 @@ The idea was, that the people dont really live in the now, more like in the past
 
 [linkedin-shield-csakafeda]: https://img.shields.io/badge/-Feodóra%20Bakó-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-csakafeda]: https://www.linkedin.com/in/feodorabako/
-[issues-shield]: https://img.shields.io/github/issues/csakafeda/EmoSense.svg?style=for-the-badge
-[issues-url]:https://github.com/users/csakafeda/projects/2
 [Spring-badge]: https://img.shields.io/badge/Spring-20232A?style=for-the-badge&logo=spring
 [Spring-url]: https://spring.io/
 [SpringBoot-badge]: https://img.shields.io/badge/Spring%20Boot-20232A?style=for-the-badge&logo=springboot
