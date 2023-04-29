@@ -1,11 +1,4 @@
-export const submitReport = (rate, text, music, picture) => {
-    console.log({
-            "moodRate": rate,
-            "moodDescription": text,
-            "moodPicture": picture,
-            "moodMusic": music
-        }
-    )
+export const submitReport = (rate, text, music, picture, setNavigate) => {
     fetch("/api", {
         method: "POST",
         headers: {
@@ -20,5 +13,6 @@ export const submitReport = (rate, text, music, picture) => {
     })
         .then(res => {
             console.log(res.json());
+            setNavigate("/");
         })
 }
