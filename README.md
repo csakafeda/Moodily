@@ -1,11 +1,11 @@
 [![LinkedIn-csakafeda][linkedin-shield-csakafeda]][linkedin-url-csakafeda]
 
-# EmoSense
+# Moodily
 
 ### About the project
 
-This application helps users record and track their daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, and improve their overall well-being.
-The idea was, that the people dont really live in the now, more like in the past or future. 
+This application to record and track people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, and improve their overall well-being, also motivate themself.
+The idea was, that the people cannot really tell how they feel themself, also live in the moment, more like in the past or future. 
 
 ### Built With
 
@@ -20,7 +20,7 @@ The idea was, that the people dont really live in the now, more like in the past
 - Clone the repository
 - Open the backend folder and run ```mvn spring-boot:run``` to start the Spring Boot server
 - Open the frontend folder and run ```npm install``` to install the necessary dependencies
-- Run ```npm start``` to start the React server
+- Run ```npm run dev``` to start the React server
 - Open **localhost:3000** in your browser to access the EmoSense application
 
 [linkedin-shield-csakafeda]: https://img.shields.io/badge/-Feodóra%20Bakó-black.svg?style=for-the-badge&logo=linkedin&colorB=555
