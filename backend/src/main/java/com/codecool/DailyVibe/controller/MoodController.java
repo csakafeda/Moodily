@@ -4,6 +4,7 @@ import com.codecool.DailyVibe.database.Mood;
 import com.codecool.DailyVibe.service.MoodService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,8 @@ public class MoodController {
                 .moodDescription(moodRequestDTO.moodDescription())
                 .moodMusic(moodRequestDTO.moodMusic())
                 .moodPicture(moodRequestDTO.moodPicture())
+                .created(LocalDate.now())
+                .moodDate(moodRequestDTO.moodDate())
                 .build();
         return moodService.saveMood(newMood);
     }

@@ -3,6 +3,8 @@ package com.codecool.DailyVibe.database;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -17,5 +19,7 @@ public class Mood {
     private String moodDescription;
     private String moodMusic;
     private String moodPicture;
+    private LocalDate created;
+    private LocalDate moodDate;
 
 }
