@@ -10,7 +10,7 @@ export default function HomePage() {
 
     return (
         <>
-            <Container  sx={{padding: "1rem", display: "flex"}}>
+            <Container sx={{padding: "1rem", display: "flex"}}>
                 <Box component="img"
                      sx={{width: "50%"}}
                      alt="Logo."
