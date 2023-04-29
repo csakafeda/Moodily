@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
-export default function Layout() {
+export default function NavBar() {
   const navigate = useNavigate();
   return (
     <>

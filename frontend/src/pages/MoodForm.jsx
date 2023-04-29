@@ -9,8 +9,10 @@ import {
 } from "@mui/material";
 import {useState} from "react";
 import {submitReport} from "../Tools/sendReport.js";
+import {useNavigate} from "react-router-dom";
 
 export default function MoodForm() {
+    const navigate = useNavigate();
     const [text, setText] = useState("");
     const [rate, setRate] = useState("");
     const [music, setMusic] = useState("");
@@ -34,20 +36,7 @@ export default function MoodForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const entries = [...formData.entries()];
-        const formObject = entries.reduce((prev, entry) => {
-            const [key, value] = entry;
-            prev[key] = value;
-            return prev;
-        }, {});
-        console.log({
-            "moodRate": rate,
-            "moodDescription": text,
-            "moodPicture": picture,
-            "moodMusic": music
-        });
-        submitReport(rate, text, music, picture);
+        submitReport(rate, text, music, picture, nav => navigate(nav));
     };
 
     return (
