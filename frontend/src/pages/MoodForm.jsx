@@ -46,8 +46,7 @@ export default function MoodForm() {
                     <InputLabel id="rate">How are you feel today?</InputLabel>
                     <Rating
                         labelid="rate"
-                        defaultValue={5}
-                        max={10}
+                        max={5}
                         onChange={handleRateChange}
                     />
                 </Container>
