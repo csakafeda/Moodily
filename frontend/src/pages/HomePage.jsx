@@ -9,7 +9,7 @@ export default function HomePage() {
     return (
         <>
             <Container align="center" sx={{padding: "1rem"}}>
-                Welcome to EmoSense,
+                Welcome to Moodily,
 
                 This website is designed to help you better understand your emotions and improve your well-being.
                 Our website allows you to easily record and track your daily experiences, giving you valuable insights
@@ -25,7 +25,7 @@ export default function HomePage() {
                         sx={{width: "50%"}}
                         size="large"
                         onClick={() => navigate("/moodForm")}>
-                    Daily Mood
+                    Add daily post
                 </Button>
             </Container>
         </>

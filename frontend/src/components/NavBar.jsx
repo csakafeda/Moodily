@@ -19,7 +19,7 @@ export default function NavBar() {
             }}
             onClick={() => navigate("/")}
           >
-            EmoSense
+            Moodily
           </Typography>
         </Toolbar>
       </AppBar>
