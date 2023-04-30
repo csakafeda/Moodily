@@ -5,6 +5,7 @@ import com.codecool.DailyVibe.database.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,4 +25,11 @@ public class MoodService {
     public Mood saveMood(Mood mood) {
         return moodRepository.save(mood);
     }
+
+    public boolean isPostedToday(LocalDate localDate) {
+        return moodRepository.findAll()
+                .stream()
+                .anyMatch(e->e.getMoodDate().equals(localDate));
+    }
 }
+
