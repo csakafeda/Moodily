@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class MoodService {
@@ -36,7 +37,8 @@ public class MoodService {
         return moodRepository.findAll()
                 .stream()
                 .filter(m -> m.getMoodDate().equals(LocalDate.now()))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
     }
 }
 
