@@ -29,7 +29,14 @@ public class MoodService {
     public boolean isPostedToday(LocalDate localDate) {
         return moodRepository.findAll()
                 .stream()
-                .anyMatch(e->e.getMoodDate().equals(localDate));
+                .anyMatch(e -> e.getMoodDate().equals(localDate));
+    }
+
+    public Mood getTodaysMood() {
+        return moodRepository.findAll()
+                .stream()
+                .filter(m -> m.getMoodDate().equals(LocalDate.now()))
+                .findFirst().get();
     }
 }
 
