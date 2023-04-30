@@ -1,4 +1,4 @@
-export const submitReport = (rate, text, music, picture, setNavigate) => {
+export const submitReport = (rate, text, music, picture, setNavigate, setError) => {
     fetch("/api", {
         method: "POST",
         headers: {
@@ -12,7 +12,13 @@ export const submitReport = (rate, text, music, picture, setNavigate) => {
         })
     })
         .then(res => {
-            console.log(res.json());
-            setNavigate("/");
+            if (res.ok) {
+                setNavigate("/");
+            } else {
+                throw new Error("Network response was not ok");
+            }
         })
+        .catch(e => {
+            setError("You already posted today");
+        });
 }

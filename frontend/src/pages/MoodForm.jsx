@@ -7,7 +7,7 @@ import {
     Button,
     Box
 } from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {submitReport} from "../Tools/sendReport.js";
 import {useNavigate} from "react-router-dom";
 
@@ -17,6 +17,7 @@ export default function MoodForm() {
     const [rate, setRate] = useState("");
     const [music, setMusic] = useState("");
     const [picture, setPicture] = useState("");
+    const [error, setError] = useState("");
 
     const handleRateChange = (e) => {
         setRate(e.target.value);
@@ -36,8 +37,12 @@ export default function MoodForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        submitReport(rate, text, music, picture, nav => navigate(nav));
+        submitReport(rate, text, music, picture, nav => navigate(nav), setError);
     };
+
+    const handleMoodChange = () => {
+    }
+
 
     return (
         <>
@@ -81,12 +86,27 @@ export default function MoodForm() {
                         ></TextField>
                     </FormControl>
                 </Container>
+                {!error ?
+                    <Container align="center" sx={{padding: "1rem"}}>
+                        <Button align="center" type={"submit"}>
+                            Send
+                        </Button>
+                    </Container>
+                    :
+                    <>
+                        <Container align="center" sx={{padding: "1rem", color: 'red'}}>{error}
+                            <Container align="center" sx={{padding: "1rem"}}>
+                                <Button disabled align="center" type={"submit"}>
+                                    Send
+                                </Button>
+                                <Button align="center" sx={{color: 'red'}} onClick={handleMoodChange}>
+                                    Change today's post!
+                                </Button>
+                            </Container>
+                        </Container>
+                    </>
+                }
 
-                <Container align="center" sx={{padding: "1rem"}}>
-                    <Button align="center" type={"submit"}>
-                        Send
-                    </Button>
-                </Container>
             </Box>
         </>
     );
