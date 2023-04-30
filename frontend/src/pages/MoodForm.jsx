@@ -7,7 +7,7 @@ import {
     Button,
     Box
 } from "@mui/material";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {submitReport} from "../Tools/sendReport.js";
 import {useNavigate} from "react-router-dom";
 
