@@ -25,18 +25,10 @@ public class MoodController {
     @PostMapping
     public Mood saveMood(@RequestBody MoodRequestDTO moodRequestDTO) {
         if (moodService.isPostedToday(LocalDate.now())) {
+            //ResponseStatusException
             throw new IllegalArgumentException("You already posted today");
         }
-        Mood newMood = Mood
-                .builder()
-                .moodRate(moodRequestDTO.moodRate())
-                .moodDescription(moodRequestDTO.moodDescription())
-                .moodMusic(moodRequestDTO.moodMusic())
-                .moodPicture(moodRequestDTO.moodPicture())
-                .created(LocalDate.now())
-                .moodDate(LocalDate.now())
-                .build();
-        return moodService.saveMood(newMood);
+        return moodService.saveMood(moodRequestDTO);
     }
 
     @GetMapping("/today")
@@ -46,5 +38,7 @@ public class MoodController {
         }
         return moodService.getTodaysMood();
     }
+
+
 
 }
