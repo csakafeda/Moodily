@@ -41,7 +41,7 @@ public class MoodController {
 
     @GetMapping("/today")
     public Mood getTodaysMood() {
-        if(!moodService.isPostedToday(LocalDate.now())){
+        if (!moodService.isPostedToday(LocalDate.now())) {
             throw new IllegalArgumentException("You have not posted today");
         }
         return moodService.getTodaysMood();

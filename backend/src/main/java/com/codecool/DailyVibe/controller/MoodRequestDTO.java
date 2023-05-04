@@ -7,5 +7,5 @@ public record MoodRequestDTO(Integer moodRate,
                              String moodPicture,
                              String moodMusic,
                              LocalDate created,
-                            LocalDate moodDate) {
+                             LocalDate moodDate) {
 }
