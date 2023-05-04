@@ -24,6 +24,6 @@ public class Mood {
     private String moodPicture;
     private LocalDate created;
     private LocalDate moodDate;
-    private Long userId;
+    private Integer userId;
 
 }

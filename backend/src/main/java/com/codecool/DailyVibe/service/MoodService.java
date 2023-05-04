@@ -50,5 +50,20 @@ public class MoodService {
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
     }
+
+    public Mood updateTodaysMood(Integer id, MoodRequestDTO moodRequestDTO) {
+        Mood moodToUpdate = moodRepository.findAll()
+                .stream()
+                .filter(m -> m.getUserId().equals(id))
+                .filter(m -> m.getMoodDate().equals(LocalDate.now()))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
+        moodToUpdate.setMoodRate(moodRequestDTO.moodRate());
+        moodToUpdate.setMoodDescription(moodRequestDTO.moodDescription());
+        moodToUpdate.setMoodPicture(moodRequestDTO.moodPicture());
+        moodToUpdate.setMoodMusic(moodRequestDTO.moodMusic());
+
+        return moodRepository.save(moodToUpdate);
+    }
 }
 
