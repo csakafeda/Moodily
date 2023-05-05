@@ -13,16 +13,16 @@ export default function CreatePost() {
         setLoading(true);
 
         submitReport(post)
+            .then(() => {
+                navigate("/");
+            })
             .catch((err) => {
                 setError("You already posted today!")
                 throw err;
             })
-            .then(() => {
+            .finally(() => {
                 setLoading(false);
-                if (error !== "") {
-                    navigate("/");
-                }
-            })
+            });
     }
 
     return (
@@ -38,5 +38,4 @@ export default function CreatePost() {
             }
         </>
     )
-        ;
 }
