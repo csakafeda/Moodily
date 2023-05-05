@@ -12,8 +12,9 @@ export default function CreatePost() {
     const postCreation = (post) => {
         setLoading(true);
         try {
-            submitReport(post, (e) => setError(e))
-                .then(console.log(post));
+            submitReport(post,
+                (e) => setError(e),
+                (nav) => navigate(nav));
         } catch (e) {
             console.log(e);
         } finally {
