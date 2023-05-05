@@ -1,9 +1,10 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import NavBar from "./components/NavBar.jsx";
-import MoodForm from "./pages/MoodForm.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import HomePage from "./Pages/HomePage";
+import NavBar from "./Components/NavBar.jsx";
+import ProfilePage from "./Pages/ProfilePage.jsx";
+import CreatePost from "./Pages/Post/CreatePost.jsx";
+import UpdatePost from "./Pages/Post/UpdatePost.jsx";
 
 function App() {
     return (
@@ -12,7 +13,8 @@ function App() {
                 <Routes>
                     <Route element={<NavBar/>}>
                         <Route path="/" element={<HomePage/>}/>
-                        <Route path="/moodForm" element={<MoodForm/>}/>
+                        <Route path="/createPost" element={<CreatePost/>}/>
+                        <Route path="/updatePost" element={<UpdatePost/>}/>
                         <Route path="/profile" element={<ProfilePage/>}/>
                     </Route>
                 </Routes>

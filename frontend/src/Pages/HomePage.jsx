@@ -41,7 +41,7 @@ export default function HomePage() {
                 <Button align="center"
                         sx={{width: "50%"}}
                         size="large"
-                        onClick={() => navigate("/moodForm")}>
+                        onClick={() => navigate("/createPost")}>
                     Add daily post
                 </Button>
             </Container>

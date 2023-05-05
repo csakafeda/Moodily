@@ -1,7 +1,11 @@
 package com.codecool.DailyVibe.controller;
 
+import java.time.LocalDate;
+
 public record MoodRequestDTO(Integer moodRate,
                              String moodDescription,
                              String moodPicture,
-                             String moodMusic) {
+                             String moodMusic,
+                             LocalDate created,
+                            LocalDate moodDate) {
 }
