@@ -11,18 +11,14 @@ export default function CreatePost() {
 
     const postCreation = (post) => {
         setLoading(true);
-
-        submitReport(post)
-            .then(() => {
-                navigate("/");
-            })
-            .catch((err) => {
-                setError("You already posted today!")
-                throw err;
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        try {
+            submitReport(post, (e) => setError(e))
+                .then(console.log(post));
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (

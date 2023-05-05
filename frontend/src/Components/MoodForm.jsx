@@ -19,21 +19,13 @@ export default function MoodForm({onSave, error, onCancel}) {
     const [music, setMusic] = useState("");
     const [picture, setPicture] = useState("");
 
-    const handleRateChange = (e) => {
-        setRate(e.target.value);
-    };
+    const handleRateChange = (e) => setRate(e.target.value);
 
-    const handleTextChange = (e) => {
-        setText(e.target.value);
-    };
+    const handleTextChange = (e) => setText(e.target.value);
 
-    const handleMusicChange = (e) => {
-        setMusic(e.target.value);
-    };
+    const handleMusicChange = (e) => setMusic(e.target.value);
 
-    const handlePictureChange = (e) => {
-        setPicture(e.target.value);
-    };
+    const handlePictureChange = (e) => setPicture(e.target.value);
 
     const onSubmit = (e) => {
         e.preventDefault();

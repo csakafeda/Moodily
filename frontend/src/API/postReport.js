@@ -1,4 +1,4 @@
-export const submitReport = (postData) => {
+export const submitReport = (postData, setError) => {
     return fetch("/api", {
         method: "POST",
         headers: {
@@ -11,5 +11,12 @@ export const submitReport = (postData) => {
             "moodMusic": postData.music
         })
     })
-        .then((res) => res.json());
+        .then((res) => {
+            if (res.status === 200) {
+                res.json();
+            }
+            if (res.status === 404) {
+                setError("You already posted today!");
+            }
+        });
 }
