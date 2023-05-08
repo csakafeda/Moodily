@@ -12,11 +12,7 @@ export default function NavBar() {
                         variant="h4"
                         color="inherit"
                         noWrap
-                        sx={{
-                            cursor: "pointer",
-                            userSelect: "none",
-                            flexGrow: 1,
-                        }}
+                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1}}
                         onClick={() => navigate("/")}
                     >
                         Moodily
@@ -26,11 +22,7 @@ export default function NavBar() {
                         variant="h6"
                         color="inherit"
                         noWrap
-                        sx={{
-                            cursor: "pointer",
-                            userSelect: "none",
-                            flexGrow: 1,
-                        }}
+                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1}}
                         onClick={() => navigate("/profile")}
                     >
                         Profile
@@ -40,11 +32,7 @@ export default function NavBar() {
                         variant="h6"
                         color="inherit"
                         noWrap
-                        sx={{
-                            cursor: "pointer",
-                            userSelect: "none",
-                            flexGrow: 1,
-                        }}
+                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
                         onClick={() => navigate("/analytics")}
                     >
                         Analytics

@@ -1,9 +1,4 @@
 export const userSearcher = (id) => {
-    return fetch(`/api/user/${id}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
+    return fetch(`/api/user/${id}`)
         .then((res) => res.json());
 }
