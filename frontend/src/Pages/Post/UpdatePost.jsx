@@ -25,18 +25,16 @@ export default function UpdatePost() {
             });
     }
 
+    if (loading) {
+        return <Loading/>;
+    }
     return (
         <>
-            {loading ?
-                <Loading/>
-                :
-                <MoodForm
-                    onCancel={() => navigate("/")}
-                    onSave={updateCreation}
-                    error={() => error}
-                />
-            }
-
+            <MoodForm
+                onCancel={() => navigate("/")}
+                onSave={updateCreation}
+                error={() => error}
+            />
         </>
     );
 }

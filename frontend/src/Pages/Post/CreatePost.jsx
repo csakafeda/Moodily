@@ -22,17 +22,17 @@ export default function CreatePost() {
         }
     }
 
+    if (loading) {
+        return <Loading/>;
+    }
+
     return (
         <>
-            {loading ?
-                <Loading/>
-                :
-                <MoodForm
-                    onCancel={() => navigate("/")}
-                    onSave={postCreation}
-                    error={error}
-                />
-            }
+            <MoodForm
+                onCancel={() => navigate("/")}
+                onSave={postCreation}
+                error={error}
+            />
         </>
     )
 }
