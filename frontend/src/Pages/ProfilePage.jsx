@@ -14,9 +14,7 @@ export default function ProfilePage() {
             .finally(setLoading(false))
     }, []);
 
-    if (loading) {
-        return <Loading/>;
-    }
+    if (loading) return <Loading/>;
 
     return (
         <>
