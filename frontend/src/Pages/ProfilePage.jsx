@@ -31,16 +31,19 @@ export default function ProfilePage() {
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <CardContent sx={{flex: '1 1 auto'}}>
                                     <Typography component="div" variant="h5">
-                                        {mood.moodDescription}
+                                        Date: {mood.moodDate}
                                     </Typography>
                                     <Typography component="div" variant="subtitle1">
-                                        {mood.moodRate}
+                                        Mood rate: {mood.moodRate}
                                     </Typography>
                                     <Typography component="div" variant="subtitle1">
-                                        {mood.moodMusic}
+                                        Description: {mood.moodDescription}
                                     </Typography>
                                     <Typography component="div" variant="subtitle1">
-                                        {mood.moodPicture}
+                                        Music: {mood.moodMusic}
+                                    </Typography>
+                                    <Typography component="div" variant="subtitle1">
+                                        Picture: {mood.moodPicture}
                                     </Typography>
                                 </CardContent>
                             </Box>

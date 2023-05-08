@@ -1,4 +1,4 @@
-export const submitReport = (postData, setError, navigate) => {
+export const addPost = (postData, setError, navigate) => {
     return fetch("/api", {
         method: "POST",
         headers: {
