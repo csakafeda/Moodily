@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DailyVibeApplication {
+public class MoodilyApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DailyVibeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MoodilyApplication.class, args);
+    }
 
 }
