@@ -13,28 +13,21 @@ import {useNavigate} from "react-router-dom";
 
 export default function MoodForm({onSave, error, onCancel}) {
     const navigate = useNavigate();
-
     const [text, setText] = useState("");
     const [rate, setRate] = useState("");
     const [music, setMusic] = useState("");
     const [picture, setPicture] = useState("");
 
     const handleRateChange = (e) => setRate(e.target.value);
-
     const handleTextChange = (e) => setText(e.target.value);
-
     const handleMusicChange = (e) => setMusic(e.target.value);
-
     const handlePictureChange = (e) => setPicture(e.target.value);
+    const handleMoodChange = () => navigate("/updatePost");
 
     const onSubmit = (e) => {
         e.preventDefault();
         return onSave({rate, text, music, picture});
     };
-
-    const handleMoodChange = () => {
-        navigate("/updatePost");
-    }
 
     return (
         <>
@@ -78,6 +71,7 @@ export default function MoodForm({onSave, error, onCancel}) {
                         Send
                     </Button>
                 </Container>
+
                 {error &&
                     <>
                         <Container align="center" sx={{padding: "1rem", color: 'red'}}>

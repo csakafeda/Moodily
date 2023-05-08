@@ -2,7 +2,7 @@ import MoodForm from "../../Components/MoodForm.jsx";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Loading from "../../Components/Loading.jsx";
-import {submitReport} from "../../API/postReport.js";
+import {addPost} from "../../API/postPost.js";
 
 export default function CreatePost() {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function CreatePost() {
     const postCreation = (post) => {
         setLoading(true);
         try {
-            submitReport(post,
+            addPost(post,
                 (e) => setError(e),
                 (nav) => navigate(nav));
         } catch (e) {
@@ -22,17 +22,17 @@ export default function CreatePost() {
         }
     }
 
+    if (loading) {
+        return <Loading/>;
+    }
+
     return (
         <>
-            {loading ?
-                <Loading/>
-                :
-                <MoodForm
-                    onCancel={() => navigate("/")}
-                    onSave={postCreation}
-                    error={error}
-                />
-            }
+            <MoodForm
+                onCancel={() => navigate("/")}
+                onSave={postCreation}
+                error={error}
+            />
         </>
     )
 }

@@ -1,5 +1,6 @@
 package com.codecool.DailyVibe.service;
 
+import com.codecool.DailyVibe.controller.MoodRequestDTO;
 import com.codecool.DailyVibe.database.Mood;
 import com.codecool.DailyVibe.database.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,17 @@ public class MoodService {
         return moodRepository.findAll();
     }
 
-    public Mood saveMood(Mood mood) {
-        return moodRepository.save(mood);
+    public Mood saveMood(MoodRequestDTO moodRequestDTO) {
+        Mood newMood = Mood
+                .builder()
+                .moodRate(moodRequestDTO.moodRate())
+                .moodDescription(moodRequestDTO.moodDescription())
+                .moodMusic(moodRequestDTO.moodMusic())
+                .moodPicture(moodRequestDTO.moodPicture())
+                .created(LocalDate.now())
+                .moodDate(LocalDate.now())
+                .build();
+        return moodRepository.save(newMood);
     }
 
     public boolean isPostedToday(LocalDate localDate) {
@@ -39,6 +49,21 @@ public class MoodService {
                 .filter(m -> m.getMoodDate().equals(LocalDate.now()))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
+    }
+
+    public Mood updateTodaysMood(Integer id, MoodRequestDTO moodRequestDTO) {
+        Mood moodToUpdate = moodRepository.findAll()
+                .stream()
+                .filter(m -> m.getUserId().equals(id))
+                .filter(m -> m.getMoodDate().equals(LocalDate.now()))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
+        moodToUpdate.setMoodRate(moodRequestDTO.moodRate());
+        moodToUpdate.setMoodDescription(moodRequestDTO.moodDescription());
+        moodToUpdate.setMoodPicture(moodRequestDTO.moodPicture());
+        moodToUpdate.setMoodMusic(moodRequestDTO.moodMusic());
+
+        return moodRepository.save(moodToUpdate);
     }
 }
 

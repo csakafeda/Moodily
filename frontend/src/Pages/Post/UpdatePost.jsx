@@ -1,5 +1,5 @@
 import MoodForm from "../../Components/MoodForm.jsx";
-import {updateReport} from "../../API/patchReport.js";
+import {updateReport} from "../../API/patchPost.js";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
@@ -25,18 +25,16 @@ export default function UpdatePost() {
             });
     }
 
+    if (loading) {
+        return <Loading/>;
+    }
     return (
         <>
-            {loading ?
-                <Loading/>
-                :
-                <MoodForm
-                    onCancel={() => navigate("/")}
-                    onSave={updateCreation}
-                    error={() => error}
-                />
-            }
-
+            <MoodForm
+                onCancel={() => navigate("/")}
+                onSave={updateCreation}
+                error={() => error}
+            />
         </>
     );
 }
