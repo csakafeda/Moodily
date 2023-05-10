@@ -33,6 +33,11 @@ public class UserService {
         return  DTOFactory.createDTO(userRepository.findById(id).orElseThrow(UserNotFoundException::new));
     }
 
+    public UserDTO getUserByUsernameAndPassword(String username, String password){
+        return DTOFactory.createDTO(userRepository.findByUsernameAndPassword(username, password)
+                .orElseThrow(UserNotFoundException::new));
+    }
+
     public UserEntity saveNewUser(UserEntity user) {
         user.setRole(Role.USER);
         return userRepository.save(user);
