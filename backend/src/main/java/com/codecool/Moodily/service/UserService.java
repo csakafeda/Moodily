@@ -1,5 +1,6 @@
 package com.codecool.Moodily.service;
 
+import com.codecool.Moodily.controller.UserNotFoundException;
 import com.codecool.Moodily.database.enums.Role;
 import com.codecool.Moodily.database.models.dto.DTOFactory;
 import com.codecool.Moodily.database.models.dto.UserDTO;
@@ -29,8 +30,8 @@ public class UserService {
     }
 
     //get user by id
-    public UserEntity getUserById(Long id) {
-        return null;
+    public UserDTO getUserById(Long id) {
+        return  DTOFactory.createDTO(userRepository.findById(id).orElseThrow(UserNotFoundException::new));
     }
 
     public UserEntity saveNewUser(UserEntity user) {

@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("id")
     public UserDTO getUser(@RequestParam Long id) {
-        return DTOFactory.createDTO(userRepository.findById(id).orElseThrow(() -> ))
+        return userService.getUserById(id);
     }
 
     @PostMapping
