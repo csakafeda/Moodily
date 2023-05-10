@@ -1,9 +1,9 @@
 import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
 import {useState} from "react";
-import Loading from "../Components/Loading.jsx";
+import Loading from "../../Components/Loading.jsx";
 import {redirect, useNavigate} from "react-router-dom";
 
-export default function Login() {
+export default function Singup() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -42,21 +42,21 @@ export default function Login() {
         <Box onSubmit={onSubmit} component={"form"}>
             <FormControl>
                 <TextField id={"username"}
-                           label={"Username:"}
+                           label={"Username"}
                            onChange={handleUsernameChange}>
                 </TextField>
             </FormControl>
 
             <FormControl>
                 <TextField id={"email"}
-                           label={"Email:"}
+                           label={"Email"}
                            onChange={handleEmailChange}>
                 </TextField>
             </FormControl>
 
             <FormControl>
                 <TextField id={"password1"}
-                           label={"Password:"}
+                           label={"Password"}
                            type="password"
                            onChange={handlePassword1Change}>
                 </TextField>
@@ -64,14 +64,14 @@ export default function Login() {
 
             <FormControl>
                 <TextField id={"password2"}
-                           label={"Password again:"}
+                           label={"Password again"}
                            type="password"
                            onChange={handlePassword2Change}>
                 </TextField>
             </FormControl>
 
             <Button type={"submit"}>
-                Login
+                Sign up
             </Button>
 
             {error &&
