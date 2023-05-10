@@ -57,6 +57,7 @@ export default function Login() {
             <FormControl>
                 <TextField id={"password1"}
                            label={"Password:"}
+                           type="password"
                            onChange={handlePassword1Change}>
                 </TextField>
             </FormControl>
@@ -64,6 +65,7 @@ export default function Login() {
             <FormControl>
                 <TextField id={"password2"}
                            label={"Password again:"}
+                           type="password"
                            onChange={handlePassword2Change}>
                 </TextField>
             </FormControl>
