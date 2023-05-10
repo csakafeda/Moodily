@@ -1,6 +1,7 @@
 package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.database.enums.Role;
+import com.codecool.Moodily.database.models.dto.DTOFactory;
 import com.codecool.Moodily.database.models.dto.UserDTO;
 import com.codecool.Moodily.database.repository.UserRepository;
 import com.codecool.Moodily.database.models.UserEntity;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -19,9 +21,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    //getAll users
-    public List<UserEntity> getAllUser() {
-        return null;
+    public List<UserDTO> getAllUser() {
+        return userRepository.findAll()
+                .stream()
+                .map(DTOFactory::createDTO)
+                .collect(Collectors.toList());
     }
 
     //get user by id
