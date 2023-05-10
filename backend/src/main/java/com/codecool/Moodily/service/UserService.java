@@ -28,9 +28,8 @@ public class UserService {
         return null;
     }
 
-    //save new user
-    public UserEntity saveNewUser(UserDTO user) {
-        return null;
+    public UserEntity saveNewUser(UserEntity user) {
+        return userRepository.save(user);
     }
 
     //update user by id
