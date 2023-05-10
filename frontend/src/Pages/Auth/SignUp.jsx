@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
-import {green, red} from "@mui/material/colors";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -78,11 +77,11 @@ export default function SignUp() {
             </FormControl>
 
             {isValidEmail ?
-                <Typography>
+                <Typography color={"green"}>
                     Your email is valid
                 </Typography>
                 :
-                <Typography>
+                <Typography color={"red"}>
                     Your email is not valid
                 </Typography>
             }
@@ -104,11 +103,11 @@ export default function SignUp() {
             </FormControl>
 
             {isValidPassword ?
-                <Typography color={green}>
+                <Typography color={"green"}>
                     Passwords are the same!
                 </Typography>
                 :
-                <Typography color={red}>
+                <Typography color={"red"}>
                     Passwords are not the same!
                 </Typography>
             }
