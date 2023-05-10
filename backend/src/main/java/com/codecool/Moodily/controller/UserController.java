@@ -1,7 +1,7 @@
 package com.codecool.Moodily.controller;
 
 import com.codecool.Moodily.controller.dto.UserDTO;
-import com.codecool.Moodily.database.repository.User;
+import com.codecool.Moodily.database.repository.UserEntity;
 import com.codecool.Moodily.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +16,12 @@ public class UserController {
     }
 
     @GetMapping("id")
-    public User getUser(@RequestParam Long id) {
+    public UserEntity getUser(@RequestParam Long id) {
         return null;
     }
 
     @PostMapping
-    public User saveNewUser(@RequestBody UserDTO userDTO) {
+    public UserEntity saveNewUser(@RequestBody UserDTO userDTO) {
         return userService.saveNewUser(userDTO);
     }
 }

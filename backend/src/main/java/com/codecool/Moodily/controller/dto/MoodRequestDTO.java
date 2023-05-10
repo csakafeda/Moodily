@@ -1,6 +1,6 @@
 package com.codecool.Moodily.controller.dto;
 
-import com.codecool.Moodily.database.repository.User;
+import com.codecool.Moodily.database.repository.UserEntity;
 
 import java.time.LocalDate;
 
@@ -10,5 +10,5 @@ public record MoodRequestDTO(Integer moodRate,
                              String moodMusic,
                              LocalDate created,
                              LocalDate moodDate,
-                             User user) {
+                             UserEntity user) {
 }

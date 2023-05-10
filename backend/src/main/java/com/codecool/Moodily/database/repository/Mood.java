@@ -22,6 +22,6 @@ public class Mood {
     private LocalDate created;
     private LocalDate moodDate;
     @ManyToOne
-    private User user;
+    private UserEntity user;
 
 }

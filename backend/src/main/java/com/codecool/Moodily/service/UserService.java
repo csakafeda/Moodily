@@ -2,7 +2,7 @@ package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.controller.dto.UserDTO;
 import com.codecool.Moodily.database.UserRepository;
-import com.codecool.Moodily.database.repository.User;
+import com.codecool.Moodily.database.repository.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,22 +19,22 @@ public class UserService {
     }
 
     //getAll users
-    public List<User> getAllUser() {
+    public List<UserEntity> getAllUser() {
         return null;
     }
 
     //get user by id
-    public User getUserById(Long id) {
+    public UserEntity getUserById(Long id) {
         return null;
     }
 
     //save new user
-    public User saveNewUser(UserDTO user) {
+    public UserEntity saveNewUser(UserDTO user) {
         return null;
     }
 
     //update user by id
-    public User updateUser(Long id) {
+    public UserEntity updateUser(Long id) {
         return null;
     }
 
