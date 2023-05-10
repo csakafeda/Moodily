@@ -1,7 +1,7 @@
 package com.codecool.Moodily.controller;
 
-import com.codecool.Moodily.controller.dto.UserDTO;
-import com.codecool.Moodily.database.repository.UserEntity;
+import com.codecool.Moodily.database.models.dto.UserDTO;
+import com.codecool.Moodily.database.models.UserEntity;
 import com.codecool.Moodily.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

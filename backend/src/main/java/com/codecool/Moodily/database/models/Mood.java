@@ -1,4 +1,4 @@
-package com.codecool.Moodily.database.repository;
+package com.codecool.Moodily.database.models;
 
 import jakarta.persistence.*;
 import lombok.*;

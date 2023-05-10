@@ -1,8 +1,8 @@
 package com.codecool.Moodily.service;
 
-import com.codecool.Moodily.controller.dto.UserDTO;
-import com.codecool.Moodily.database.UserRepository;
-import com.codecool.Moodily.database.repository.UserEntity;
+import com.codecool.Moodily.database.models.dto.UserDTO;
+import com.codecool.Moodily.database.repository.UserRepository;
+import com.codecool.Moodily.database.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

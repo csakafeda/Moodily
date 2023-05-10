@@ -1,8 +1,8 @@
 package com.codecool.Moodily.service;
 
-import com.codecool.Moodily.controller.dto.MoodRequestDTO;
-import com.codecool.Moodily.database.MoodRepository;
-import com.codecool.Moodily.database.repository.Mood;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
+import com.codecool.Moodily.database.repository.MoodRepository;
+import com.codecool.Moodily.database.models.Mood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

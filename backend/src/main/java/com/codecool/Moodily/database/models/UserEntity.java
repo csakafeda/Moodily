@@ -1,4 +1,4 @@
-package com.codecool.Moodily.database.repository;
+package com.codecool.Moodily.database.models;
 
 import com.codecool.Moodily.database.enums.Role;
 import jakarta.persistence.*;

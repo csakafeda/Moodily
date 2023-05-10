@@ -1,6 +1,6 @@
-package com.codecool.Moodily.database;
+package com.codecool.Moodily.database.repository;
 
-import com.codecool.Moodily.database.repository.UserEntity;
+import com.codecool.Moodily.database.models.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

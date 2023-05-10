@@ -1,7 +1,7 @@
 package com.codecool.Moodily.controller;
 
-import com.codecool.Moodily.controller.dto.MoodRequestDTO;
-import com.codecool.Moodily.database.repository.Mood;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
+import com.codecool.Moodily.database.models.Mood;
 import com.codecool.Moodily.service.MoodService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

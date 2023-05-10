@@ -1,6 +1,6 @@
-package com.codecool.Moodily.controller.dto;
+package com.codecool.Moodily.database.models.dto;
 
-import com.codecool.Moodily.database.repository.UserEntity;
+import com.codecool.Moodily.database.models.UserEntity;
 
 import java.time.LocalDate;
 
