@@ -1,5 +1,5 @@
 export const addUser = (user, navigate) => {
-    return fetch("/api/user", {
+    return fetch("/api/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
