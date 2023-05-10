@@ -1,4 +1,4 @@
-package com.codecool.DailyVibe;
+package com.codecool.Moodily;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

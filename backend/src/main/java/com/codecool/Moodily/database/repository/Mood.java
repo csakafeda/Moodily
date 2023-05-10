@@ -1,9 +1,6 @@
-package com.codecool.DailyVibe.database;
+package com.codecool.Moodily.database.repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -24,6 +21,7 @@ public class Mood {
     private String moodPicture;
     private LocalDate created;
     private LocalDate moodDate;
-    private Integer userId;
+    @ManyToOne
+    private User user;
 
 }
