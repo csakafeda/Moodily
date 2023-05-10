@@ -10,6 +10,7 @@ export default function SignUp() {
     const [loading, setLoading] = useState(false);
     const [isValidPassword, setIsValidPassword] = useState(false);
     const [isValidEmail, setIsValidEmail] = useState(false);
+    const [error, setError] = useState("");
 
     const [user, setUser] = useState({
         username: "",
@@ -26,22 +27,34 @@ export default function SignUp() {
     useEffect(() => {
         if (user.password1 === "" || user.password2 === "") {
             setIsValidPassword(false);
-        }else if (user.password1 !== user.password2) {
+        } else if (user.password1 !== user.password2) {
             setIsValidPassword(false);
         } else {
             setIsValidPassword(true);
         }
     }, [user.password1, user.password2])
 
+    useEffect(() => {
+        if (isEmail(user.email)) {
+            setIsValidEmail(true);
+        } else {
+            setIsValidEmail(false);
+        }
+    }, [user.email])
+
     const onSubmit = (e) => {
         e.preventDefault();
-        //post fetch body
-        console.log({
-            username: user.username,
-            email: user.email,
-            password: user.password1
-        });
-        navigate("/");
+        if (!isValidEmail || !isValidPassword) {
+            setError("You are missing some things...")
+        } else {
+            //post fetch body
+            console.log({
+                username: user.username,
+                email: user.email,
+                password: user.password1
+            });
+            navigate("/");
+        }
     }
 
     if (loading) {
@@ -64,6 +77,16 @@ export default function SignUp() {
                 </TextField>
             </FormControl>
 
+            {isValidEmail ?
+                <Typography>
+                    Your email is valid
+                </Typography>
+                :
+                <Typography>
+                    Your email is not valid
+                </Typography>
+            }
+
             <FormControl>
                 <TextField id={"password1"}
                            label={"Password"}
@@ -79,6 +102,7 @@ export default function SignUp() {
                            onChange={handlePassword2Change}>
                 </TextField>
             </FormControl>
+
             {isValidPassword ?
                 <Typography color={green}>
                     Passwords are the same!
@@ -92,6 +116,10 @@ export default function SignUp() {
             <Button type={"submit"}>
                 Sign up
             </Button>
+            {error &&
+                <Typography>
+                    {error}
+                </Typography>}
 
         </Box>
     )
