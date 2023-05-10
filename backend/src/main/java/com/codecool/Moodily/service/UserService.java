@@ -1,5 +1,6 @@
 package com.codecool.Moodily.service;
 
+import com.codecool.Moodily.database.enums.Role;
 import com.codecool.Moodily.database.models.dto.UserDTO;
 import com.codecool.Moodily.database.repository.UserRepository;
 import com.codecool.Moodily.database.models.UserEntity;
@@ -29,6 +30,7 @@ public class UserService {
     }
 
     public UserEntity saveNewUser(UserEntity user) {
+        user.setRole(Role.USER);
         return userRepository.save(user);
     }
 
