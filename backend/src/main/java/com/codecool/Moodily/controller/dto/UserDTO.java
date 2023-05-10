@@ -7,7 +7,5 @@ import java.util.List;
 
 public record UserDTO(String username,
                       String email,
-                      String password,
-                      Role role,
-                      List<Mood> moodList) {
+                      String password) {
 }
