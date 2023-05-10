@@ -6,8 +6,8 @@ import ProfilePage from "./Pages/ProfilePage.jsx";
 import CreatePost from "./Pages/Post/CreatePost.jsx";
 import UpdatePost from "./Pages/Post/UpdatePost.jsx";
 import AnalyticsPage from "./Pages/Analytics/AnalyticPage.jsx";
-import Singup from "./Pages/Auth/Singup.jsx";
-import Login from "./Pages/Auth/Login.jsx";
+import SignUp from "./Pages/Auth/SignUp.jsx";
+import LogIn from "./Pages/Auth/LogIn.jsx";
 
 function App() {
     return (
@@ -20,8 +20,8 @@ function App() {
                         <Route path="/updatePost" element={<UpdatePost/>}/>
                         <Route path="/profile" element={<ProfilePage/>}/>
                         <Route path="/analytics" element={<AnalyticsPage/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/signup" element={<Singup/>}/>
+                        <Route path="/login" element={<LogIn/>}/>
+                        <Route path="/signup" element={<SignUp/>}/>
                     </Route>
                 </Routes>
             </Router>

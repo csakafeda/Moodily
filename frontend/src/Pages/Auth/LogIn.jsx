@@ -3,7 +3,7 @@ import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
 
-export default function Login() {
+export default function LogIn() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
