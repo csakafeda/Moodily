@@ -5,7 +5,8 @@ import com.codecool.Moodily.database.repository.Mood;
 
 import java.util.List;
 
-public record UserDTO(String username,
-                      String email,
-                      String password) {
+public record UserDTO( Long userId,
+                       String username,
+                       String email,
+                       String password) {
 }
