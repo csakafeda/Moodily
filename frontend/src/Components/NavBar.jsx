@@ -37,6 +37,27 @@ export default function NavBar() {
                     >
                         Analytics
                     </Typography>
+
+                    <Typography
+                        component="span"
+                        variant="h6"
+                        color="inherit"
+                        noWrap
+                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                        onClick={() => navigate("/SignUp")}
+                    >
+                        Sign up
+                    </Typography>
+                    <Typography
+                        component="span"
+                        variant="h6"
+                        color="inherit"
+                        noWrap
+                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                        onClick={() => navigate("/LogIn")}
+                    >
+                        Log in
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Outlet/>
