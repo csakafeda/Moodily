@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, TextField} from "@mui/material";
+import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import Loading from "../Components/Loading.jsx";
 import {redirect, useNavigate} from "react-router-dom";
@@ -6,6 +6,7 @@ import {redirect, useNavigate} from "react-router-dom";
 export default function Login() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const [user, setUser] = useState({
         username: "",
@@ -16,18 +17,20 @@ export default function Login() {
 
     const handleUsernameChange = (e) => setUser({...user, username: e.target.value});
     const handleEmailChange = (e) => setUser({...user, email: e.target.value});
-    const handlePassword1Change = (e) => setUser({ ...user, password1: e.target.value});
-    const handlePassword2Change = (e) => setUser({ ...user, password2: e.target.value});
+    const handlePassword1Change = (e) => setUser({...user, password1: e.target.value});
+    const handlePassword2Change = (e) => setUser({...user, password2: e.target.value});
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if(user.password1 === user.password2){
+        if (user.password1 === user.password2) {
             console.log({
                 username: user.username,
                 email: user.email,
                 password: user.password1
             });
             navigate("/");
+        } else {
+            setError("Passwords are not the same");
         }
     }
 
@@ -41,7 +44,6 @@ export default function Login() {
                 <TextField id={"username"}
                            label={"Username:"}
                            onChange={handleUsernameChange}>
-
                 </TextField>
             </FormControl>
 
@@ -49,7 +51,6 @@ export default function Login() {
                 <TextField id={"email"}
                            label={"Email:"}
                            onChange={handleEmailChange}>
-
                 </TextField>
             </FormControl>
 
@@ -71,6 +72,11 @@ export default function Login() {
                 Login
             </Button>
 
+            {error &&
+                <Typography color={"red"}>
+                    {error}
+                </Typography>
+            }
         </Box>
     )
 }
