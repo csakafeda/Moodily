@@ -1,18 +1,21 @@
 import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
+import isEmail from 'validator/lib/isEmail';
+import {green, red} from "@mui/material/colors";
 
 export default function SignUp() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [isValidPassword, setIsValidPassword] = useState(false);
+    const [isValidEmail, setIsValidEmail] = useState(false);
 
     const [user, setUser] = useState({
         username: "",
         email: "",
         password1: "",
-        password2: "",
+        password2: ""
     });
 
     const handleUsernameChange = (e) => setUser({...user, username: e.target.value});
@@ -20,18 +23,25 @@ export default function SignUp() {
     const handlePassword1Change = (e) => setUser({...user, password1: e.target.value});
     const handlePassword2Change = (e) => setUser({...user, password2: e.target.value});
 
+    useEffect(() => {
+        if (user.password1 === "" || user.password2 === "") {
+            setIsValidPassword(false);
+        }else if (user.password1 !== user.password2) {
+            setIsValidPassword(false);
+        } else {
+            setIsValidPassword(true);
+        }
+    }, [user.password1, user.password2])
+
     const onSubmit = (e) => {
         e.preventDefault();
-        if (user.password1 === user.password2) {
-            console.log({
-                username: user.username,
-                email: user.email,
-                password: user.password1
-            });
-            navigate("/");
-        } else {
-            setError("Passwords are not the same");
-        }
+        //post fetch body
+        console.log({
+            username: user.username,
+            email: user.email,
+            password: user.password1
+        });
+        navigate("/");
     }
 
     if (loading) {
@@ -69,16 +79,20 @@ export default function SignUp() {
                            onChange={handlePassword2Change}>
                 </TextField>
             </FormControl>
+            {isValidPassword ?
+                <Typography color={green}>
+                    Passwords are the same!
+                </Typography>
+                :
+                <Typography color={red}>
+                    Passwords are not the same!
+                </Typography>
+            }
 
             <Button type={"submit"}>
                 Sign up
             </Button>
 
-            {error &&
-                <Typography color={"red"}>
-                    {error}
-                </Typography>
-            }
         </Box>
     )
 }
