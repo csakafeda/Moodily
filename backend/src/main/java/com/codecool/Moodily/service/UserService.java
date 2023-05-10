@@ -29,7 +29,6 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    //get user by id
     public UserDTO getUserById(Long id) {
         return  DTOFactory.createDTO(userRepository.findById(id).orElseThrow(UserNotFoundException::new));
     }
