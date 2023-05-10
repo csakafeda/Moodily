@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
+import {addUser} from "../../API/postUser.js";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -17,6 +18,17 @@ export default function SignUp() {
         password1: "",
         password2: ""
     });
+
+    const saveUser = (user) => {
+        setLoading(true);
+        try {
+            addUser(user, (nav) => navigate(nav));
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     const handleUsernameChange = (e) => setUser({...user, username: e.target.value});
     const handleEmailChange = (e) => setUser({...user, email: e.target.value});
@@ -46,8 +58,7 @@ export default function SignUp() {
         if (!isValidEmail || !isValidPassword) {
             setError("You are missing some things...")
         } else {
-            //post fetch body
-            console.log({
+            saveUser({
                 username: user.username,
                 email: user.email,
                 password: user.password1
@@ -77,13 +88,9 @@ export default function SignUp() {
             </FormControl>
 
             {isValidEmail ?
-                <Typography color={"green"}>
-                    Your email is valid
-                </Typography>
+                <Typography color={"green"}>Your email is valid</Typography>
                 :
-                <Typography color={"red"}>
-                    Your email is not valid
-                </Typography>
+                <Typography color={"red"}>Your email is not valid</Typography>
             }
 
             <FormControl>
@@ -102,23 +109,15 @@ export default function SignUp() {
                 </TextField>
             </FormControl>
 
-            {isValidPassword ?
-                <Typography color={"green"}>
-                    Passwords are the same!
-                </Typography>
+            {isValidPassword ? <Typography color={"green"}>Passwords are the same!</Typography>
                 :
-                <Typography color={"red"}>
-                    Passwords are not the same!
-                </Typography>
+                <Typography color={"red"}>Passwords are not the same!</Typography>
             }
 
             <Button type={"submit"}>
                 Sign up
             </Button>
-            {error &&
-                <Typography>
-                    {error}
-                </Typography>}
+            {error && <Typography>{error}</Typography>}
 
         </Box>
     )
