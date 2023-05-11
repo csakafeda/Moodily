@@ -2,6 +2,7 @@ import {Box, Button, FormControl, TextField} from "@mui/material";
 import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
+import {login} from "../../API/postUser.js";
 
 export default function LogIn() {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function LogIn() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        login(user, nav => navigate(nav));
         navigate("/");
     }
 

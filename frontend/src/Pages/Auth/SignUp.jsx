@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
-import {addUser} from "../../API/postUser.js";
+import {signup} from "../../API/postUser.js";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -22,9 +22,9 @@ export default function SignUp() {
     const saveUser = (user) => {
         setLoading(true);
         try {
-            addUser(user, (nav) => navigate(nav));
+            signup(user, (nav) => navigate(nav));
         } catch (e) {
-            console.log(e);
+            console.error(e);
         } finally {
             setLoading(false);
         }
