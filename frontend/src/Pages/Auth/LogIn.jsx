@@ -1,0 +1,52 @@
+import {Box, Button, FormControl, TextField} from "@mui/material";
+import {useState} from "react";
+import Loading from "../../Components/Loading.jsx";
+import {useNavigate} from "react-router-dom";
+import {login} from "../../API/userAPI.js";
+
+export default function LogIn() {
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+
+    const [user, setUser] = useState({
+        username: "",
+        password: ""
+    });
+
+    const handleUsernameChange = (e) => setUser({...user, username: e.target.value});
+    const handlePasswordChange = (e) => setUser({...user, password: e.target.value});
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        login(user, nav => navigate(nav));
+        navigate("/");
+    }
+
+    if (loading) {
+        return <Loading/>;
+    }
+
+    return (
+        <Box onSubmit={onSubmit} component={"form"}>
+            <FormControl>
+                <TextField id={"username"}
+                           label={"Username:"}
+                           onChange={handleUsernameChange}>
+                </TextField>
+            </FormControl>
+
+            <FormControl>
+                <TextField id={"password"}
+                           label={"Password"}
+                           type="password"
+                           onChange={handlePasswordChange}>
+                </TextField>
+            </FormControl>
+
+            <Button type={"submit"}>
+                Login
+            </Button>
+
+        </Box>
+    )
+}

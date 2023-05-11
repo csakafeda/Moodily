@@ -1,4 +1,4 @@
 package com.codecool.Moodily.database.models.dto;
 
-public record CredentialDTO(String password) {
+public record CredentialDTO(String username, String password) {
 }

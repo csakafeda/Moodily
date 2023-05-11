@@ -1,8 +1,8 @@
 import MoodForm from "../../Components/MoodForm.jsx";
-import {updateReport} from "../../API/patchPost.js";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
+import {updateReport} from "../../API/postAPI.js";
 
 export default function UpdatePost() {
     const navigate = useNavigate();
@@ -11,7 +11,6 @@ export default function UpdatePost() {
 
     const updateCreation = (post) => {
         setLoading(true);
-
         updateReport(post)
             .then(() => {
                 navigate("/");

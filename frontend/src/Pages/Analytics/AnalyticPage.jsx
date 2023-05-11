@@ -1,7 +1,7 @@
 import {Container, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
-import {getAllPost} from "../../API/getPosts.js";
+import {getAllPost} from "../../API/postAPI.js";
 import {averageCalculator} from "./analyticsCalculator.js";
 
 export default function AnalyticsPage() {
