@@ -1,4 +1,6 @@
-package com.codecool.DailyVibe.controller;
+package com.codecool.Moodily.database.models.dto;
+
+import com.codecool.Moodily.database.models.UserEntity;
 
 import java.time.LocalDate;
 
@@ -8,5 +10,5 @@ public record MoodRequestDTO(Integer moodRate,
                              String moodMusic,
                              LocalDate created,
                              LocalDate moodDate,
-                             Integer userId) {
+                             UserEntity user) {
 }

@@ -1,8 +1,8 @@
-package com.codecool.DailyVibe.service;
+package com.codecool.Moodily.service;
 
-import com.codecool.DailyVibe.controller.MoodRequestDTO;
-import com.codecool.DailyVibe.database.Mood;
-import com.codecool.DailyVibe.database.MoodRepository;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
+import com.codecool.Moodily.database.repository.MoodRepository;
+import com.codecool.Moodily.database.models.Mood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +54,7 @@ public class MoodService {
     public Mood updateTodaysMood(Integer id, MoodRequestDTO moodRequestDTO) {
         Mood moodToUpdate = moodRepository.findAll()
                 .stream()
-                .filter(m -> m.getUserId().equals(id))
+                .filter(m -> (m.getUser().getId()).equals(id))
                 .filter(m -> m.getMoodDate().equals(LocalDate.now()))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
