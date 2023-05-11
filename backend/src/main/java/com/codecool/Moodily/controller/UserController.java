@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 
 @RestController
@@ -33,10 +32,9 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    // DUE TO THE PRESENTATIONS this
-    @GetMapping("byUsername/{username}")
-    public UserDTO getUserByUsernameAndPassword(@PathVariable String username, @RequestBody CredentialDTO credential){
-        return userService.getUserByUsernameAndPassword(username, credential.password());
+    @PostMapping("login")
+    public UserDTO getUserByUsernameAndPassword(@RequestBody CredentialDTO credentialDTO){
+        return userService.getUserByUsernameAndPassword(credentialDTO.username(), credentialDTO.password());
     }
 
     @PostMapping
