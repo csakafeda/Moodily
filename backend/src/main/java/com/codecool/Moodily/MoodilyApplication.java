@@ -1,4 +1,4 @@
-package com.codecool.DailyVibe;
+package com.codecool.Moodily;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

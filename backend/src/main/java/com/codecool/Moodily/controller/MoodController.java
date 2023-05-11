@@ -1,7 +1,8 @@
-package com.codecool.DailyVibe.controller;
+package com.codecool.Moodily.controller;
 
-import com.codecool.DailyVibe.database.Mood;
-import com.codecool.DailyVibe.service.MoodService;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
+import com.codecool.Moodily.database.models.Mood;
+import com.codecool.Moodily.service.MoodService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -45,6 +46,5 @@ public class MoodController {
     public Mood patchTodaysMood(@PathVariable("id") Integer id, MoodRequestDTO moodRequestDTO) {
         return moodService.updateTodaysMood(id, moodRequestDTO);
     }
-
 
 }
