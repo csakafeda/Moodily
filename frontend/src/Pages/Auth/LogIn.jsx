@@ -2,7 +2,7 @@ import {Box, Button, FormControl, TextField} from "@mui/material";
 import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
-import {login} from "../../API/postUser.js";
+import {login} from "../../API/userAPI.js";
 
 export default function LogIn() {
     const navigate = useNavigate();

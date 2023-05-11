@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
-import {signup} from "../../API/postUser.js";
+import {signup} from "../../API/userAPI.js";
 
 export default function SignUp() {
     const navigate = useNavigate();

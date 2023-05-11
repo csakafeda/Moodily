@@ -1,7 +1,7 @@
 import {Container, Card, Box, CardContent, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../Components/Loading.jsx";
-import {getAllPost} from "../API/getPosts.js";
+import {getAllPost} from "../API/postAPI.js";
 
 export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
