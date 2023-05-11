@@ -6,10 +6,13 @@ import {
     Button,
     Box,
     Stack,
-    Typography
+    Typography,
+    styled
 } from "@mui/material";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function MoodForm({onSave, error, onCancel}) {
     const navigate = useNavigate();
@@ -17,6 +20,15 @@ export default function MoodForm({onSave, error, onCancel}) {
     const [rate, setRate] = useState("");
     const [music, setMusic] = useState("");
     const [picture, setPicture] = useState("");
+
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-iconFilled': {
+            color: '#ff6d75',
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ff3d47',
+        },
+    });
 
     const handleRateChange = (e) => setRate(e.target.value);
     const handleTextChange = (e) => setText(e.target.value);
@@ -31,17 +43,31 @@ export default function MoodForm({onSave, error, onCancel}) {
 
     return (
         <>
-            <Box onSubmit={onSubmit} component={"form"}>
+            <Box onSubmit={onSubmit} component={"form"} sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "5vh",
+                margin: "5vh 10vw 5vh 10vw",
+                border: "1vh solid",
+                borderRadius: "5vh",
+            }}>
                 <FormControl align="center" sx={{padding: "1rem"}}>
-                    <Typography>How are you feel today?</Typography>
-                    <Rating
+                    <Typography component="h1" variant="h5" sx={{marginBottom: "1rem", color: "primary.main"}}>
+                        How are you feel today?
+                    </Typography>
+                    <StyledRating
                         labelid="rate"
-                        max={5}
+                        getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                         onChange={handleRateChange}
+                        precision={0.5}
+                        icon={<FavoriteIcon fontSize="inherit" />}
+                        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />
+                    }
                     />
                 </FormControl>
 
-                <FormControl align="center" sx={{padding: "1rem"}}>
+                <FormControl align="center" sx={{padding: "1rem", color: "secondary.main"}}>
                     <TextField
                         label="What happened with you today?"
                         id="text"
@@ -77,16 +103,17 @@ export default function MoodForm({onSave, error, onCancel}) {
                         <Container align="center" sx={{padding: "1rem", color: 'red'}}>
                             <p>{error}</p>
                             <Button align="center" sx={{color: 'red'}} onClick={handleMoodChange}>
-                                Change todays post!
+                                Change today's post!
                             </Button>
                         </Container>
                     </>
                 }
-                <Stack>
-                    <Button variant="contained" color="warning" onClick={onCancel}>
+
+                <Container align="center">
+                    <Button variant="contained" align="center" sx={{color: 'red'}} onClick={onCancel}>
                         Cancel
                     </Button>
-                </Stack>
+                </Container>
 
             </Box>
         </>

@@ -1,20 +1,20 @@
 import {Outlet, useNavigate} from "react-router-dom";
 import {AppBar, Toolbar, Typography} from "@mui/material";
-import {isUserSignedIn, signUserOut} from "../userTools.js";
+import {isUserSignedIn, signUserOut} from "../Tools/userTools.js";
 
 export default function NavBar() {
     const navigate = useNavigate();
 
     return (
         <>
-            <AppBar position="static" color="default" elevation={0}>
-                <Toolbar sx={{flexWrap: "wrap"}}>
+            <AppBar position="static" color="default">
+                <Toolbar sx={{flexWrap: "wrap"}} variant="dense">
                     <Typography
                         component="span"
                         variant="h4"
                         color="inherit"
                         noWrap
-                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1}}
+                        sx={{cursor: "pointer", flexGrow: 1}}
                         onClick={() => navigate("/")}
                     >
                         Moodily
@@ -24,7 +24,7 @@ export default function NavBar() {
                         variant="h6"
                         color="inherit"
                         noWrap
-                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1}}
+                        sx={{cursor: "pointer", flexGrow: 1}}
                         onClick={() => navigate("/profile")}
                     >
                         Profile
@@ -34,7 +34,7 @@ export default function NavBar() {
                         variant="h6"
                         color="inherit"
                         noWrap
-                        sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                        sx={{cursor: "pointer", flexGrow: 1,}}
                         onClick={() => navigate("/analytics")}
                     >
                         Analytics
@@ -46,7 +46,7 @@ export default function NavBar() {
                                 variant="h6"
                                 color="inherit"
                                 noWrap
-                                sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                                sx={{cursor: "pointer"}}
                                 onClick={() => {
                                     signUserOut();
                                     navigate("/");
@@ -58,21 +58,30 @@ export default function NavBar() {
                         :
                         <>
                             <Typography
-                                component="span"
-                                variant="h6"
-                                color="inherit"
+                                color="primary"
                                 noWrap
-                                sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                                sx={{
+                                    cursor: "pointer",
+                                    flexGrow: 0.3,
+                                    backgroundColor: "pink",
+                                    borderRadius: 5,
+                                    padding: "0vh 1vw 0.5vh 1vw",
+                                    margin: "3vw"
+                                }}
                                 onClick={() => navigate("/SignUp")}
                             >
                                 Sign up
                             </Typography>
                             <Typography
-                                component="span"
-                                variant="h6"
-                                color="inherit"
+                                color="primary"
                                 noWrap
-                                sx={{cursor: "pointer", userSelect: "none", flexGrow: 1,}}
+                                sx={{
+                                    cursor: "pointer",
+                                    flexGrow: 0.3,
+                                    backgroundColor: "pink",
+                                    borderRadius: 5,
+                                    padding: "0vh 1vw 0.5vh 1vw"
+                                }}
                                 onClick={() => navigate("/LogIn")}>
                                 Log in
                             </Typography>
@@ -84,5 +93,4 @@ export default function NavBar() {
             <Outlet/>
         </>
     )
-        ;
 }

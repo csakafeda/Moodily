@@ -1,4 +1,4 @@
-import {setUserId, setUserName} from "../userTools.js";
+import {setUserId, setUserName} from "../Tools/userTools.js";
 
 export const signup = (user, navigate) => {
     return fetch("/api/users", {

@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, TextField, Typography} from "@mui/material";
+import {Box, Button, FormControl, TextField, Typography, Container} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
@@ -72,53 +72,63 @@ export default function SignUp() {
     }
 
     return (
-        <Box onSubmit={onSubmit} component={"form"}>
-            <FormControl>
-                <TextField id={"username"}
-                           label={"Username"}
-                           onChange={handleUsernameChange}>
-                </TextField>
-            </FormControl>
+        <Container sx={{marginBlock: 2}}>
+            <Box onSubmit={onSubmit} component={"form"} sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "5vh",
+                margin: "20vh",
+                border: "1vh solid",
+                borderRadius: "5vh",
+            }}>
+                <FormControl>
+                    <TextField id={"username"}
+                               label={"Username"}
+                               onChange={handleUsernameChange}>
+                    </TextField>
+                </FormControl>
 
-            <FormControl>
-                <TextField id={"email"}
-                           label={"Email"}
-                           onChange={handleEmailChange}>
-                </TextField>
-            </FormControl>
+                <FormControl>
+                    <TextField id={"email"}
+                               label={"Email"}
+                               onChange={handleEmailChange}>
+                    </TextField>
+                </FormControl>
 
-            {isValidEmail ?
-                <Typography color={"green"}>Your email is valid</Typography>
-                :
-                <Typography color={"red"}>Your email is not valid</Typography>
-            }
+                {isValidEmail ?
+                    <Typography color={"green"}>Your email is valid</Typography>
+                    :
+                    <Typography color={"red"}>Your email is not valid</Typography>
+                }
 
-            <FormControl>
-                <TextField id={"password1"}
-                           label={"Password"}
-                           type="password"
-                           onChange={handlePassword1Change}>
-                </TextField>
-            </FormControl>
+                <FormControl>
+                    <TextField id={"password1"}
+                               label={"Password"}
+                               type="password"
+                               onChange={handlePassword1Change}>
+                    </TextField>
+                </FormControl>
 
-            <FormControl>
-                <TextField id={"password2"}
-                           label={"Password again"}
-                           type="password"
-                           onChange={handlePassword2Change}>
-                </TextField>
-            </FormControl>
+                <FormControl>
+                    <TextField id={"password2"}
+                               label={"Password again"}
+                               type="password"
+                               onChange={handlePassword2Change}>
+                    </TextField>
+                </FormControl>
 
-            {isValidPassword ? <Typography color={"green"}>Passwords are the same!</Typography>
-                :
-                <Typography color={"red"}>Passwords are not the same!</Typography>
-            }
+                {isValidPassword ? <Typography color={"green"}>Passwords are the same!</Typography>
+                    :
+                    <Typography color={"red"}>Passwords are not the same!</Typography>
+                }
 
-            <Button type={"submit"}>
-                Sign up
-            </Button>
-            {error && <Typography>{error}</Typography>}
+                <Button type={"submit"}>
+                    Sign up
+                </Button>
+                {error && <Typography>{error}</Typography>}
 
-        </Box>
+            </Box>
+        </Container>
     )
 }
