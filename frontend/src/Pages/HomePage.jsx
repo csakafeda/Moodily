@@ -12,7 +12,7 @@ export default function HomePage() {
         <>
             <Container sx={{padding: "1rem", display: "flex"}}>
                 <Box component="img"
-                     sx={{width: "40vw", borderRadius: '50%'}}
+                     sx={{width: "40vw", borderRadius: '30%', maxWidth: "20vw"}}
                      alt="Logo."
                      src={catPic}
                 />
@@ -39,7 +39,7 @@ export default function HomePage() {
             </Container>
             <Container align="center" sx={{padding: "1rem"}}>
                 <Button align="center"
-                        sx={{width: "50vh", color: "red", borderRadius: "5vh"}}
+                        sx={{color: "red", borderRadius: "100%"}}
                         size="large"
                         onClick={() => navigate("/createPost")}>
                     Add daily post

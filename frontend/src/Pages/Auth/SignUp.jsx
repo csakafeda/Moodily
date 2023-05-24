@@ -79,20 +79,22 @@ export default function SignUp() {
                 alignItems: "center",
                 padding: "5vh",
                 margin: "20vh",
-                border: "1vh solid",
-                borderRadius: "5vh",
+                border: "1rem solid #777",
+                borderRadius: "0.25rem",
             }}>
-                <FormControl>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"username"}
                                label={"Username"}
                                onChange={handleUsernameChange}>
+                        sx={{marginBottom: "2rem"}}
                     </TextField>
                 </FormControl>
 
-                <FormControl>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"email"}
                                label={"Email"}
                                onChange={handleEmailChange}>
+                        sx={{marginBottom: "2rem"}}
                     </TextField>
                 </FormControl>
 
@@ -102,7 +104,7 @@ export default function SignUp() {
                     <Typography color={"red"}>Your email is not valid</Typography>
                 }
 
-                <FormControl>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"password1"}
                                label={"Password"}
                                type="password"
@@ -110,11 +112,12 @@ export default function SignUp() {
                     </TextField>
                 </FormControl>
 
-                <FormControl>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"password2"}
                                label={"Password again"}
                                type="password"
                                onChange={handlePassword2Change}>
+                        sx={{marginBottom: "2rem"}}
                     </TextField>
                 </FormControl>
 
@@ -123,7 +126,8 @@ export default function SignUp() {
                     <Typography color={"red"}>Passwords are not the same!</Typography>
                 }
 
-                <Button type={"submit"}>
+                <Button type={"submit"}
+                        sx={{marginBottom: "2rem"}}>
                     Sign up
                 </Button>
                 {error && <Typography>{error}</Typography>}

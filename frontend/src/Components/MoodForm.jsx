@@ -5,7 +5,6 @@ import {
     TextField,
     Button,
     Box,
-    Stack,
     Typography,
     styled
 } from "@mui/material";
@@ -60,10 +59,10 @@ export default function MoodForm({onSave, error, onCancel}) {
                         labelid="rate"
                         getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                         onChange={handleRateChange}
-                        precision={0.5}
-                        icon={<FavoriteIcon fontSize="inherit" />}
-                        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />
-                    }
+                        icon={<FavoriteIcon fontSize="inherit"/>}
+                        emptyIcon={<FavoriteBorderIcon fontSize="inherit"
+                                                       required/>
+                        }
                     />
                 </FormControl>
 

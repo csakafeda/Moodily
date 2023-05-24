@@ -25,10 +25,11 @@ export default function ProfilePage() {
                 :
                 <Container align="center" sx={{padding: "1rem"}}>
                     <h1>Profile page</h1>
-                    UserName: {username}
+                    Username: {username}
 
                     {data.reverse().map((mood) => (
-                        <Card sx={{display: 'flex', margin: "5% 5% 5% 5%", width: "50%", padding: "1rem"}} key={mood.id}>
+                        <Card sx={{display: 'flex', margin: "5% 5% 5% 5%", width: "50%", padding: "1rem"}}
+                              key={mood.id}>
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <CardContent sx={{flex: '1'}}>
                                     <Typography component="div" variant="h5">

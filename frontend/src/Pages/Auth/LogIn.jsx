@@ -1,4 +1,4 @@
-import {Box, Button, Container, FormControl, Link, TextField, Typography} from "@mui/material";
+import {Box, Button, Container, FormControl, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import Loading from "../../Components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
@@ -36,12 +36,12 @@ export default function LogIn() {
                 padding: "5vh",
                 margin: "4vh 20% 4vh 20%",
                 border: "1vh solid",
-                borderRadius: "5vh",
+                borderRadius: "0.25rem",
             }}>
                 <Typography component="h1" variant="h5">
                     Log in
                 </Typography>
-                <FormControl sx={{marginBottom: "3vh"}}>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"username"}
                                label={"Username:"}
                                required
@@ -49,7 +49,7 @@ export default function LogIn() {
                     </TextField>
                 </FormControl>
 
-                <FormControl sx={{marginBottom: "3vh"}}>
+                <FormControl sx={{marginBottom: "2rem"}}>
                     <TextField id={"password"}
                                label={"Password"}
                                type="password"
