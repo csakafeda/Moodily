@@ -1,4 +1,4 @@
-import {Container, Card, Box, CardContent, Typography} from "@mui/material";
+import {Container, Card, Box, CardContent, Typography, Button} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../Components/Loading.jsx";
 import {getAllPost} from "../API/postAPI.js";
@@ -6,6 +6,7 @@ import {getAllPost} from "../API/postAPI.js";
 export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+    const username = localStorage.getItem("username")
 
     useEffect(() => {
         setLoading(true);
@@ -24,10 +25,13 @@ export default function ProfilePage() {
                 :
                 <Container align="center" sx={{padding: "1rem"}}>
                     <h1>Profile page</h1>
-                    {data.map((mood) => (
-                        <Card sx={{display: 'flex'}} key={mood.id}>
+                    Username: {username}
+
+                    {data.reverse().map((mood) => (
+                        <Card sx={{display: 'flex', margin: "5% 5% 5% 5%", width: "50%", padding: "1rem"}}
+                              key={mood.id}>
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
-                                <CardContent sx={{flex: '1 1 auto'}}>
+                                <CardContent sx={{flex: '1'}}>
                                     <Typography component="div" variant="h5">
                                         Date: {mood.moodDate}
                                     </Typography>
@@ -45,6 +49,7 @@ export default function ProfilePage() {
                                     </Typography>
                                 </CardContent>
                             </Box>
+                            <Button sx={{color: "pink"}}> Update </Button>
                         </Card>
                     ))}
                 </Container>

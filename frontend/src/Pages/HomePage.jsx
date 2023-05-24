@@ -12,12 +12,12 @@ export default function HomePage() {
         <>
             <Container sx={{padding: "1rem", display: "flex"}}>
                 <Box component="img"
-                     sx={{width: "50%"}}
+                     sx={{width: "40vw", borderRadius: '30%', maxWidth: "20vw"}}
                      alt="Logo."
                      src={catPic}
                 />
                 <Container>
-                    <Typography sx={{padding: "1rem"}}>
+                    <Typography sx={{padding: "1rem", fontSize: '1.5rem'}}>
                         Welcome to Moodily,
                     </Typography>
                     <Typography>
@@ -39,7 +39,7 @@ export default function HomePage() {
             </Container>
             <Container align="center" sx={{padding: "1rem"}}>
                 <Button align="center"
-                        sx={{width: "50%"}}
+                        sx={{color: "red", borderRadius: "100%"}}
                         size="large"
                         onClick={() => navigate("/createPost")}>
                     Add daily post
