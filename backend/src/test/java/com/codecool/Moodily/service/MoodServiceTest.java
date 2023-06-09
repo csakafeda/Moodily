@@ -4,20 +4,22 @@ import com.codecool.Moodily.database.models.Mood;
 import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.models.UserEntity;
 import com.codecool.Moodily.database.repository.MoodRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class MoodServiceTest {
 
     @Mock
@@ -25,11 +27,6 @@ class MoodServiceTest {
 
     @InjectMocks
     private MoodService moodService;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void testGetAllMoods() {
@@ -58,7 +55,7 @@ class MoodServiceTest {
         LocalDate today = LocalDate.now();
         Mood mood = new Mood();
         mood.setMoodDate(today);
-        when(moodRepository.findAll()).thenReturn(Arrays.asList(mood));
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(mood));
 
         boolean isPostedToday = moodService.isPostedToday(today);
 
@@ -72,11 +69,36 @@ class MoodServiceTest {
         LocalDate yesterday = today.minusDays(1);
         Mood mood = new Mood();
         mood.setMoodDate(yesterday);
-        when(moodRepository.findAll()).thenReturn(Arrays.asList(mood));
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(mood));
 
         boolean isPostedToday = moodService.isPostedToday(today);
 
         assertFalse(isPostedToday);
+        verify(moodRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testGetTodaysMood_PostedToday_ReturnsMood() {
+        LocalDate today = LocalDate.now();
+        Mood expectedMood = new Mood();
+        expectedMood.setMoodDate(today);
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(expectedMood));
+
+        Mood actualMood = moodService.getTodaysMood();
+
+        assertEquals(expectedMood, actualMood);
+        verify(moodRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testGetTodaysMood_NotPostedToday_ThrowsNoSuchElementException() {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        Mood mood = new Mood();
+        mood.setMoodDate(yesterday);
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(mood));
+
+        assertThrows(NoSuchElementException.class, () -> moodService.getTodaysMood());
         verify(moodRepository, times(1)).findAll();
     }
 
