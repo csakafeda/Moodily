@@ -1,7 +1,4 @@
-import {
-    Box,
-    Button, Container, Typography
-} from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import catPic from "../public/ca.png";
 
@@ -37,12 +34,24 @@ export default function HomePage() {
                     </Typography>
                 </Container>
             </Container>
-            <Container align="center" sx={{padding: "1rem"}}>
-                <Button align="center"
-                        sx={{color: "red", borderRadius: "100%"}}
-                        size="large"
-                        onClick={() => navigate("/createPost")}>
-                    Add daily post
+            <Container align="center" sx={{padding: '1rem'}}>
+                <Button
+                    align="center"
+                    sx={{
+                        color: 'red',
+                        backgroundColor: 'black',
+                        fontSize: '10vh',
+                        width: '20vh',
+                        height: '20vh',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                    size="large"
+                    onClick={() => navigate('/createPost')}
+                >
+                    +
                 </Button>
             </Container>
         </>
