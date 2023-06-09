@@ -102,4 +102,48 @@ class MoodServiceTest {
         verify(moodRepository, times(1)).findAll();
     }
 
+    @Test
+    void testUpdateTodaysMood_Exists_ReturnsUpdatedMood() {
+        Long userId = 1L;
+        LocalDate today = LocalDate.now();
+        Mood moodToUpdate = new Mood();
+        moodToUpdate.setId(userId);
+        moodToUpdate.setUser(UserEntity.builder().id(userId).build());
+        moodToUpdate.setMoodDate(today);
+
+        MoodRequestDTO moodRequestDTO = new MoodRequestDTO(5, "Updated description", "updated_picture.jpg", "updated_music.mp3", LocalDate.now(), LocalDate.now(), UserEntity.builder().id(userId).build());
+
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(moodToUpdate));
+        when(moodRepository.save(any(Mood.class))).thenReturn(moodToUpdate);
+
+        Mood updatedMood = moodService.updateTodaysMood(userId, moodRequestDTO);
+
+        assertNotNull(updatedMood);
+        assertEquals(moodRequestDTO.moodRate(), updatedMood.getMoodRate());
+        assertEquals(moodRequestDTO.moodDescription(), updatedMood.getMoodDescription());
+        assertEquals(moodRequestDTO.moodPicture(), updatedMood.getMoodPicture());
+        assertEquals(moodRequestDTO.moodMusic(), updatedMood.getMoodMusic());
+        verify(moodRepository, times(1)).findAll();
+        verify(moodRepository, times(1)).save(any(Mood.class));
+    }
+
+    @Test
+    void testUpdateTodaysMood_NotExists_ThrowsNoSuchElementException() {
+        Long userId = 1L;
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        Mood mood = new Mood();
+        mood.setId(1L);
+        mood.setUser(UserEntity.builder().id(userId).build());
+        mood.setMoodDate(yesterday);
+
+        MoodRequestDTO moodRequestDTO = new MoodRequestDTO(5, "Updated description", "updated_picture.jpg", "updated_music.mp3", LocalDate.now(), LocalDate.now(), UserEntity.builder().id(userId).build());
+
+        when(moodRepository.findAll()).thenReturn(Collections.singletonList(mood));
+
+        assertThrows(NoSuchElementException.class, () -> moodService.updateTodaysMood(userId, moodRequestDTO));
+        verify(moodRepository, times(1)).findAll();
+        verify(moodRepository, never()).save(any(Mood.class));
+    }
+
 }
