@@ -1,5 +1,5 @@
 import {Outlet, useNavigate} from "react-router-dom";
-import {AppBar, Toolbar, Typography} from "@mui/material";
+import {AppBar, Button, Toolbar, Typography} from "@mui/material";
 import {isUserSignedIn, signUserOut} from "../Tools/userTools.js";
 
 export default function NavBar() {
@@ -41,50 +41,52 @@ export default function NavBar() {
                     </Typography>
                     {isUserSignedIn() ?
                         <>
-                            <Typography
-                                component="span"
-                                variant="h6"
-                                color="inherit"
-                                noWrap
-                                sx={{cursor: "pointer"}}
+
+                            <Button
+                                sx={{
+                                    cursor: "pointer",
+                                    flexGrow: 0.3,
+                                    backgroundColor: "pink",
+                                    borderRadius: 5,
+                                    padding: "0vh 1vw 0vh 1vw",
+                                    margin: "3vw"
+                                }}
                                 onClick={() => {
                                     signUserOut();
                                     navigate("/");
                                 }}
                             >
-                                Sign out
-                            </Typography>
+                                Sign up
+                            </Button>
                         </>
                         :
                         <>
-                            <Typography
-                                color="primary"
-                                noWrap
+                            <Button
                                 sx={{
                                     cursor: "pointer",
                                     flexGrow: 0.3,
                                     backgroundColor: "pink",
                                     borderRadius: 5,
-                                    padding: "0vh 1vw 0.5vh 1vw",
+                                    padding: "0vh 1vw 0vh 1vw",
                                     margin: "3vw"
                                 }}
                                 onClick={() => navigate("/SignUp")}
                             >
                                 Sign up
-                            </Typography>
-                            <Typography
-                                color="primary"
-                                noWrap
+                            </Button>
+                            <Button
                                 sx={{
                                     cursor: "pointer",
                                     flexGrow: 0.3,
                                     backgroundColor: "pink",
                                     borderRadius: 5,
-                                    padding: "0vh 1vw 0.5vh 1vw"
+                                    padding: "0vh 1vw 0vh 1vw",
+                                    margin: "3vw"
                                 }}
-                                onClick={() => navigate("/LogIn")}>
+                                onClick={() => navigate("/LogIn")}
+                            >
                                 Log in
-                            </Typography>
+                            </Button>
                         </>
                     }
 
