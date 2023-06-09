@@ -53,5 +53,31 @@ class MoodServiceTest {
         verify(moodRepository, times(1)).save(any(Mood.class));
     }
 
+    @Test
+    void testIsPostedToday_PostedToday_ReturnsTrue() {
+        LocalDate today = LocalDate.now();
+        Mood mood = new Mood();
+        mood.setMoodDate(today);
+        when(moodRepository.findAll()).thenReturn(Arrays.asList(mood));
+
+        boolean isPostedToday = moodService.isPostedToday(today);
+
+        assertTrue(isPostedToday);
+        verify(moodRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testIsPostedToday_NotPostedToday_ReturnsFalse() {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        Mood mood = new Mood();
+        mood.setMoodDate(yesterday);
+        when(moodRepository.findAll()).thenReturn(Arrays.asList(mood));
+
+        boolean isPostedToday = moodService.isPostedToday(today);
+
+        assertFalse(isPostedToday);
+        verify(moodRepository, times(1)).findAll();
+    }
 
 }
