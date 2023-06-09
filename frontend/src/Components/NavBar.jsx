@@ -48,7 +48,6 @@ export default function NavBar() {
                                     flexGrow: 0.3,
                                     backgroundColor: "pink",
                                     borderRadius: 5,
-                                    padding: "0vh 1vw 0vh 1vw",
                                     margin: "3vw"
                                 }}
                                 onClick={() => {
@@ -67,7 +66,6 @@ export default function NavBar() {
                                     flexGrow: 0.3,
                                     backgroundColor: "pink",
                                     borderRadius: 5,
-                                    padding: "0vh 1vw 0vh 1vw",
                                     margin: "3vw"
                                 }}
                                 onClick={() => navigate("/SignUp")}
@@ -80,8 +78,7 @@ export default function NavBar() {
                                     flexGrow: 0.3,
                                     backgroundColor: "pink",
                                     borderRadius: 5,
-                                    padding: "0vh 1vw 0vh 1vw",
-                                    margin: "3vw"
+                                    margin: "3vw",
                                 }}
                                 onClick={() => navigate("/LogIn")}
                             >
@@ -89,7 +86,6 @@ export default function NavBar() {
                             </Button>
                         </>
                     }
-
                 </Toolbar>
             </AppBar>
             <Outlet/>
