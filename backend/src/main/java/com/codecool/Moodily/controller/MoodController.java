@@ -43,7 +43,7 @@ public class MoodController {
     }
 
     @PatchMapping("update/{id}")
-    public Mood patchTodaysMood(@PathVariable("id") Integer id, MoodRequestDTO moodRequestDTO) {
+    public Mood patchTodaysMood(@PathVariable("id") Long id, MoodRequestDTO moodRequestDTO) {
         return moodService.updateTodaysMood(id, moodRequestDTO);
     }
 

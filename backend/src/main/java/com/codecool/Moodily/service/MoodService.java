@@ -51,7 +51,7 @@ public class MoodService {
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
     }
 
-    public Mood updateTodaysMood(Integer id, MoodRequestDTO moodRequestDTO) {
+    public Mood updateTodaysMood(Long id, MoodRequestDTO moodRequestDTO) {
         Mood moodToUpdate = moodRepository.findAll()
                 .stream()
                 .filter(m -> (m.getUser().getId()).equals(id))
