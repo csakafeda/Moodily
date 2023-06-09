@@ -1,8 +1,8 @@
 package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.database.models.Mood;
-import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.models.UserEntity;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.repository.MoodRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
