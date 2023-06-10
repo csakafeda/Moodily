@@ -73,7 +73,7 @@ export default function NavBar() {
 
     return (
         <>
-            <Toolbar>
+            <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Fragment key={anchor}>
                     <Button onClick={toggleDrawer(true)}>MENU</Button>
                     <SwipeableDrawer
@@ -94,7 +94,7 @@ export default function NavBar() {
                 >
                     Moodily
                 </Typography>
-                <Box sx={{flexGrow: 1}}/>
+                <Box/>
                 {isUserSignedIn() ? (
                     <Button
                         sx={{

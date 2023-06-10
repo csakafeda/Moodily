@@ -9,6 +9,9 @@ import SignUp from "./Pages/Auth/SignUp.jsx";
 import LogIn from "./Pages/Auth/LogIn.jsx";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { themeOptions } from "./Theme.js";
+import Calendar from "./Pages/Calendar/Calendar.jsx";
+import Goals from "./Pages/Goals/Goals.jsx";
+import MusicPage from "./Pages/MusicList/MusicList.jsx";
 
 function App() {
     const theme = createTheme(themeOptions);
@@ -25,6 +28,9 @@ function App() {
                         <Route path="/updatePost" element={<UpdatePost />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/analytics" element={<AnalyticsPage />} />
+                        <Route path="/calendar" element={<Calendar />} />
+                        <Route path="/music" element={<MusicPage />} />
+                        <Route path="/goals" element={<Goals />} />
                         <Route path="/login" element={<LogIn />} />
                         <Route path="/signup" element={<SignUp />} />
                     </Routes>
