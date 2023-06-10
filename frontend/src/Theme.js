@@ -8,11 +8,11 @@ export const themeOptions = {
             main: '#ea638c',
         },
         background: {
-            default: '#fab7b9',
+            default: '#ffcdcd',
             paper: '#89023e',
         },
         text: {
-            primary: '#ffffff',
+            primary: '#000000',
             secondary: '#1b2021',
             disabled: '#7aff43',
             hint: '#dfff00',
