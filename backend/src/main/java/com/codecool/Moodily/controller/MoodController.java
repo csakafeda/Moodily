@@ -1,7 +1,7 @@
 package com.codecool.Moodily.controller;
 
-import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.models.Mood;
+import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.service.MoodService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +45,11 @@ public class MoodController {
     @PatchMapping("update/{id}")
     public Mood patchTodaysMood(@PathVariable("id") Long id, MoodRequestDTO moodRequestDTO) {
         return moodService.updateTodaysMood(id, moodRequestDTO);
+    }
+
+    @DeleteMapping( "delete/{id}")
+    public void deleteMood(@PathVariable("id") Long id) {
+        moodService.deleteMood((id));
     }
 
 }

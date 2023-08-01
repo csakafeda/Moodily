@@ -1,8 +1,8 @@
 package com.codecool.Moodily.service;
 
+import com.codecool.Moodily.database.models.Mood;
 import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.repository.MoodRepository;
-import com.codecool.Moodily.database.models.Mood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +31,7 @@ public class MoodService {
                 .moodDescription(moodRequestDTO.moodDescription())
                 .moodMusic(moodRequestDTO.moodMusic())
                 .moodPicture(moodRequestDTO.moodPicture())
+                .user(moodRequestDTO.user())
                 .created(LocalDate.now())
                 .moodDate(LocalDate.now())
                 .build();
@@ -64,6 +65,15 @@ public class MoodService {
         moodToUpdate.setMoodMusic(moodRequestDTO.moodMusic());
 
         return moodRepository.save(moodToUpdate);
+    }
+
+    public void deleteMood(Long id) {
+        Mood moodToDelete = moodRepository.findAll()
+                .stream()
+                .filter(m -> (m.getId()).equals(id))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("No mood with this id"));
+        moodRepository.delete(moodToDelete);
     }
 }
 
