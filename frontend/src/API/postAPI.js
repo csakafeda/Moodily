@@ -1,3 +1,5 @@
+import {getUserId} from "../Tools/userTools.js";
+
 export const getAllPost = () => {
     return fetch(`/api`)
         .then((res) => res.json());
@@ -28,7 +30,8 @@ export const addPost = (postData, setError, navigate) => {
             "moodRate": postData.rate,
             "moodDescription": postData.text,
             "moodPicture": postData.picture,
-            "moodMusic": postData.music
+            "moodMusic": postData.music,
+            "userId": getUserId()
         })
     })
         .then((res) => {

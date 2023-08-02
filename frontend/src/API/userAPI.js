@@ -1,7 +1,7 @@
 import {setUserId, setUserName} from "../Tools/userTools.js";
 
 export const signup = (user, navigate) => {
-    return fetch("/api/users", {
+    return fetch("/api/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -18,6 +18,7 @@ export const signup = (user, navigate) => {
                     .then(data => {
                         setUserId(data.id);
                         setUserName(data.username)
+                        console.log(data);
                     })
                 navigate("/");
             }
@@ -39,6 +40,7 @@ export const login = (user, navigate) => {
             if (res.status === 200) {
                 res.json()
                     .then(data => {
+                        console.log(data)
                         setUserId(data.userId);
                         setUserName(data.username);
                         navigate("/")

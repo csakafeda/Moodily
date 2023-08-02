@@ -2,17 +2,17 @@ import {Container, Card, Box, CardContent, Typography, Button} from "@mui/materi
 import {useEffect, useState} from "react";
 import Loading from "../Components/Loading.jsx";
 import {getAllPost} from "../API/postAPI.js";
+import {getUsername} from "../Tools/userTools.js";
 
 export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-    const username = localStorage.getItem("username")
 
     useEffect(() => {
         setLoading(true);
         getAllPost()
             .then((res) => setData(res))
-            .finally(setLoading(false))
+            .finally(setLoading(false));
     }, []);
 
     if (loading) return <Loading/>;
@@ -25,7 +25,7 @@ export default function ProfilePage() {
                 :
                 <Container align="center" sx={{padding: "1rem"}}>
                     <h1>Profile page</h1>
-                    Username: {username}
+                    Username: {getUsername()}
 
                     {data.reverse().map((mood) => (
                         <Card sx={{display: 'flex', margin: "5% 5% 5% 5%", width: "50%", padding: "1rem"}}
