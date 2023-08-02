@@ -10,5 +10,5 @@ public record MoodRequestDTO(Integer moodRate,
                              String moodMusic,
                              LocalDate created,
                              LocalDate moodDate,
-                             UserEntity user) {
+                             Long userId) {
 }

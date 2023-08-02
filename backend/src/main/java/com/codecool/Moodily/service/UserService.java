@@ -2,10 +2,10 @@ package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.controller.UserNotFoundException;
 import com.codecool.Moodily.database.enums.Role;
+import com.codecool.Moodily.database.models.UserEntity;
 import com.codecool.Moodily.database.models.dto.DTOFactory;
 import com.codecool.Moodily.database.models.dto.UserDTO;
 import com.codecool.Moodily.database.repository.UserRepository;
-import com.codecool.Moodily.database.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +29,11 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDTO getUserById(Long id) {
-        return  DTOFactory.createDTO(userRepository.findById(id).orElseThrow(UserNotFoundException::new));
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
-    public UserDTO getUserByUsernameAndPassword(String username, String password){
+    public UserDTO getUserByUsernameAndPassword(String username, String password) {
         return DTOFactory.createDTO(userRepository.findByUsernameAndPassword(username, password)
                 .orElseThrow(UserNotFoundException::new));
     }

@@ -1,8 +1,10 @@
 package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.database.models.Mood;
+import com.codecool.Moodily.database.models.UserEntity;
 import com.codecool.Moodily.database.models.dto.MoodRequestDTO;
 import com.codecool.Moodily.database.repository.MoodRepository;
+import com.codecool.Moodily.database.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +16,12 @@ import java.util.NoSuchElementException;
 public class MoodService {
 
     private final MoodRepository moodRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public MoodService(MoodRepository moodRepository) {
+    public MoodService(MoodRepository moodRepository, UserRepository userRepository) {
         this.moodRepository = moodRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Mood> getAllMoods() {
@@ -25,16 +29,21 @@ public class MoodService {
     }
 
     public Mood saveMood(MoodRequestDTO moodRequestDTO) {
+        UserEntity createdBy = userRepository.findById(moodRequestDTO.userId()).get();
+
         Mood newMood = Mood
                 .builder()
                 .moodRate(moodRequestDTO.moodRate())
                 .moodDescription(moodRequestDTO.moodDescription())
                 .moodMusic(moodRequestDTO.moodMusic())
                 .moodPicture(moodRequestDTO.moodPicture())
-                .user(moodRequestDTO.user())
+                .user(createdBy)
                 .created(LocalDate.now())
                 .moodDate(LocalDate.now())
                 .build();
+
+        System.out.println(createdBy.getId());
+
         return moodRepository.save(newMood);
     }
 
