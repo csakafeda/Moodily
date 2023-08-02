@@ -9,3 +9,7 @@ export const setUserName = (username) => localStorage.setItem("username", userna
 export const getUsername = () => {
     return localStorage.getItem("username");
 }
+
+export const getUserId = () => {
+    return localStorage.getItem("userId");
+}
