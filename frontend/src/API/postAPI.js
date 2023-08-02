@@ -1,7 +1,7 @@
 import {getUserId} from "../Tools/userTools.js";
 
 export const getAllPost = () => {
-    return fetch(`/api`)
+    return fetch(`/api/${getUserId()}`)
         .then((res) => res.json());
 }
 
