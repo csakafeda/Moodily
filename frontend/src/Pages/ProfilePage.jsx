@@ -1,8 +1,9 @@
-import {Container, Card, Box, CardContent, Typography, Button} from "@mui/material";
+import {Container} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../Components/Loading.jsx";
 import {getAllPost} from "../API/postAPI.js";
 import {getUsername} from "../Tools/userTools.js";
+import {MoodCard} from "../Components/MoodCard.jsx";
 
 export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
@@ -27,31 +28,10 @@ export default function ProfilePage() {
                     <h1>Profile page</h1>
                     Username: {getUsername()}
 
-                    {data.reverse().map((mood) => (
-                        <Card sx={{display: 'flex', margin: "5% 5% 5% 5%", width: "50%", padding: "1rem"}}
-                              key={mood.id}>
-                            <Box sx={{display: 'flex', flexDirection: 'column'}}>
-                                <CardContent sx={{flex: '1'}}>
-                                    <Typography component="div" variant="h5">
-                                        Date: {mood.moodDate}
-                                    </Typography>
-                                    <Typography component="div" variant="subtitle1">
-                                        Mood rate: {mood.moodRate}
-                                    </Typography>
-                                    <Typography component="div" variant="subtitle1">
-                                        Description: {mood.moodDescription}
-                                    </Typography>
-                                    <Typography component="div" variant="subtitle1">
-                                        Music: {mood.moodMusic}
-                                    </Typography>
-                                    <Typography component="div" variant="subtitle1">
-                                        Picture: {mood.moodPicture}
-                                    </Typography>
-                                </CardContent>
-                            </Box>
-                            <Button sx={{color: "pink"}}> Update </Button>
-                        </Card>
-                    ))}
+                    {data
+                        ? data.map((mood) => (<MoodCard key={mood.id} mood={mood}/>))
+                        : <div> You have not posted yet.</div>
+                    }
                 </Container>
             }
         </>
