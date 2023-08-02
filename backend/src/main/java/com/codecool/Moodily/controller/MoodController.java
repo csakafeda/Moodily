@@ -26,7 +26,7 @@ public class MoodController {
     }
 
     @GetMapping("/{id}")
-    public List<Mood> getAllMoodByUserId(@PathVariable Long userId){
+    public List<Mood> getAllMoodByUserId(@PathVariable("id") Long userId){
         return moodService.getAllMoodsByUserId(userId);
     }
 

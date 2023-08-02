@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -29,10 +30,11 @@ public class MoodService {
     }
 
     public List<Mood> getAllMoodsByUserId(Long userId) {
-        return moodRepository.findAll()
-                .stream()
-                .filter(m -> m.getUser().getId().equals(userId))
-                .toList();
+        UserEntity user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            return Collections.emptyList();
+        }
+        return moodRepository.findAllByUser(user);
     }
 
     public Mood saveMood(MoodRequestDTO moodRequestDTO) {

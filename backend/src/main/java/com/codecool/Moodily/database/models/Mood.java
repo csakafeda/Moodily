@@ -1,5 +1,6 @@
 package com.codecool.Moodily.database.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Mood {
     private LocalDate created;
     private LocalDate moodDate;
     @ManyToOne
+    @JsonIgnore
     private UserEntity user;
 
 }
