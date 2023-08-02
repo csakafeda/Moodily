@@ -38,8 +38,8 @@ public class MoodService {
     }
 
     public Mood saveMood(MoodRequestDTO moodRequestDTO) {
-        UserEntity createdBy = userRepository.findById(moodRequestDTO.userId()).get();
-
+        UserEntity createdBy = userRepository.findById(moodRequestDTO.userId())
+                .orElseThrow(() -> new NoSuchElementException("Not signed in"));
         Mood newMood = Mood
                 .builder()
                 .moodRate(moodRequestDTO.moodRate())
