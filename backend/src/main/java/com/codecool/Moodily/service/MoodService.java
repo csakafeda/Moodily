@@ -28,6 +28,13 @@ public class MoodService {
         return moodRepository.findAll();
     }
 
+    public List<Mood> getAllMoodsByUserId(Long userId) {
+        return moodRepository.findAll()
+                .stream()
+                .filter(m -> m.getUser().getId().equals(userId))
+                .toList();
+    }
+
     public Mood saveMood(MoodRequestDTO moodRequestDTO) {
         UserEntity createdBy = userRepository.findById(moodRequestDTO.userId()).get();
 
@@ -47,10 +54,11 @@ public class MoodService {
         return moodRepository.save(newMood);
     }
 
-    public boolean isPostedToday(LocalDate localDate) {
+    public boolean isPostedToday(LocalDate localDate, Long userId) {
         return moodRepository.findAll()
                 .stream()
-                .anyMatch(e -> e.getMoodDate().equals(localDate));
+                .filter(e -> e.getMoodDate().equals(localDate))
+                .filter(m -> m.getUser().getId().equals(userId)).toList().size() > 0;
     }
 
     public Mood getTodaysMood() {

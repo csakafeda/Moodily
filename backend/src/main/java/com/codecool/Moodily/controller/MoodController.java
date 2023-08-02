@@ -25,9 +25,14 @@ public class MoodController {
         return moodService.getAllMoods();
     }
 
+    @GetMapping("/{id}")
+    public List<Mood> getAllMoodByUserId(@PathVariable Long userId){
+        return moodService.getAllMoodsByUserId(userId);
+    }
+
     @PostMapping
     public Mood saveMood(@RequestBody MoodRequestDTO moodRequestDTO) {
-        if (moodService.isPostedToday(LocalDate.now())) {
+        if (moodService.isPostedToday(LocalDate.now(), moodRequestDTO.userId())) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "You have posted today");
         }
         return moodService.saveMood(moodRequestDTO);
