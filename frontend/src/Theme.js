@@ -1,18 +1,17 @@
 export const themeOptions = {
     palette: {
-        mode: 'dark',
         primary: {
             main: '#30343f',
         },
         secondary: {
-            main: '#ea638c',
+            main: '#038c4c',
         },
         background: {
-            default: '#fab7b9',
-            paper: '#89023e',
+            default: '#FFFFFF',
+            paper: '#E6F7E9',
         },
         text: {
-            primary: '#ffffff',
+            primary: '#038c4c',
             secondary: '#1b2021',
             disabled: '#7aff43',
             hint: '#dfff00',
