@@ -73,9 +73,14 @@ export default function NavBar() {
 
     return (
         <>
-            <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Toolbar
+                style={{display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: "2vh",
+                    alignItems: "stretch",
+                    backgroundColor: "#038c4c"}}>
                 <Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(true)}>MENU</Button>
+                    <Button onClick={toggleDrawer(true)} sx={{  fontSize: "20px"}}>MENU</Button>
                     <SwipeableDrawer
                         anchor={anchor}
                         open={state}
@@ -86,22 +91,18 @@ export default function NavBar() {
                     </SwipeableDrawer>
                 </Fragment>
                 <Typography
-                    component="span"
-                    variant="h4"
-                    color="inherit"
-                    sx={{cursor: "pointer", alignItem: "center"}}
+                    color="primary"
+                    sx={{cursor: "pointer", alignItem: "center", fontSize: "3rem"}}
                     onClick={() => navigate("/")}
                 >
                     Moodily
                 </Typography>
-                <Box/>
                 {isUserSignedIn() ? (
                     <Button
+                        color="primary"
                         sx={{
                             cursor: "pointer",
-                            backgroundColor: "pink",
-                            borderRadius: 5,
-                            margin: "3vw",
+                            fontSize: "20px"
                         }}
                         onClick={() => {
                             signUserOut();
@@ -112,11 +113,10 @@ export default function NavBar() {
                     </Button>
                 ) : (
                     <Button
+                        color="secondary"
                         sx={{
                             cursor: "pointer",
-                            backgroundColor: "pink",
-                            borderRadius: 5,
-                            margin: "3vw",
+                            fontSize: "20px"
                         }}
                         onClick={() => {
                             navigate("/login");
