@@ -113,7 +113,7 @@ export default function NavBar() {
                     </Button>
                 ) : (
                     <Button
-                        color="secondary"
+                        color="primary"
                         sx={{
                             cursor: "pointer",
                             fontSize: "20px"
