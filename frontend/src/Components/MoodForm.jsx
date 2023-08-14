@@ -1,19 +1,11 @@
-import {
-    Container,
-    Rating,
-    FormControl,
-    TextField,
-    Button,
-    Box,
-    Typography,
-    styled
-} from "@mui/material";
+import {Box, Button, Container, FormControl, Rating, styled, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import {getTodaysPost} from "../API/postAPI.js";
 
-export default function MoodForm({onSave, error, onCancel}) {
+export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const navigate = useNavigate();
     const [text, setText] = useState("");
     const [rate, setRate] = useState("");
@@ -33,7 +25,10 @@ export default function MoodForm({onSave, error, onCancel}) {
     const handleTextChange = (e) => setText(e.target.value);
     const handleMusicChange = (e) => setMusic(e.target.value);
     const handlePictureChange = (e) => setPicture(e.target.value);
-    const handleMoodChange = () => navigate("/updatePost");
+    const handleMoodChange = async () => {
+        getTodaysPost()
+            .then(res => navigate(`/updatePost/${res.id}`))
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -70,7 +65,7 @@ export default function MoodForm({onSave, error, onCancel}) {
                     <TextField
                         label="What happened with you today?"
                         id="text"
-                        value={text}
+                        value={postToUpdate ? postToUpdate.text : text}
                         onChange={handleTextChange}
                     ></TextField>
                 </FormControl>
@@ -80,6 +75,7 @@ export default function MoodForm({onSave, error, onCancel}) {
                         label="Which music represent your day?"
                         id="music"
                         onChange={handleMusicChange}
+                        value={postToUpdate ? postToUpdate.music : music}
                     ></TextField>
                 </FormControl>
 
@@ -88,6 +84,7 @@ export default function MoodForm({onSave, error, onCancel}) {
                         label="Add picture?"
                         id="picture"
                         onChange={handlePictureChange}
+                        value={postToUpdate ? postToUpdate.picture : picture}
                     ></TextField>
                 </FormControl>
 
