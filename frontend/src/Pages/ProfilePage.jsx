@@ -1,4 +1,4 @@
-import {Container} from "@mui/material";
+import {Container, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import Loading from "../Components/Loading.jsx";
 import {getAllPost} from "../API/postAPI.js";
@@ -20,17 +20,15 @@ export default function ProfilePage() {
 
     return (
         <>
-            {!data
-                ?
-                <div> You have no posts yet.</div>
-                :
+            {
                 <Container align="center" sx={{padding: "1rem"}}>
-                    <h1>Profile page</h1>
+                    <Typography sx={{fontSize: "5vh"}}>Profile page</Typography>
                     Username: {getUsername()}
-
-                    {data
-                        ? data.map((mood) => (<MoodCard key={mood.id} mood={mood}/>))
-                        : <div> You have not posted yet.</div>
+                    {data.length === 0
+                        ? <div style={{paddingTop: "10vh", fontSize: "4vh", color: "red"}}>
+                            You have not posted yet.
+                        </div>
+                        : data.map((mood) => (<MoodCard key={mood.id} mood={mood}/>))
                     }
                 </Container>
             }
