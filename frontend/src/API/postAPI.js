@@ -8,6 +8,10 @@ export const getPostById = (id) => {
     return fetch(`/api/post/${id}`)
         .then((res) => res.json());
 }
+export const getTodaysPost = () => {
+    return fetch(`/api/today`)
+        .then((res) => res.json());
+}
 
 export const updateReport = (postId, postData) => {
     return fetch(`/api/update/${postId}`, {
