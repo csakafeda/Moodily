@@ -1,22 +1,37 @@
 import MoodForm from "../../Components/MoodForm.jsx";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 import Loading from "../../Components/Loading.jsx";
-import {updateReport} from "../../API/postAPI.js";
+import {getPostById, updateReport} from "../../API/postAPI.js";
 
 export default function UpdatePost() {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const {postId} = useParams();
+    const [postToUpdate, setPostToUpdate] = useState(null);
+
+    useEffect(() => {
+        setLoading(true);
+        getPostById(postId)
+            .then((res) => {
+                setPostToUpdate(res);
+            })
+            .catch((error) => {
+                throw error;
+            }).finally(() => {
+            setLoading(false);
+        });
+    }, [postId]);
 
     const updateCreation = (post) => {
         setLoading(true);
-        updateReport(post)
+        updateReport( postId, post)
             .then(() => {
                 navigate("/");
             })
             .catch((err) => {
-                setError("You already posted today!")
+                setError("Something went wrong!")
                 throw err;
             })
             .finally(() => {
@@ -30,9 +45,10 @@ export default function UpdatePost() {
     return (
         <>
             <MoodForm
+                postToUpdate={postToUpdate}
                 onCancel={() => navigate("/")}
                 onSave={updateCreation}
-                error={() => error}
+                error={error}
             />
         </>
     );

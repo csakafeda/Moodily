@@ -74,15 +74,14 @@ public class MoodService {
     public Mood updateTodaysMood(Long id, MoodRequestDTO moodRequestDTO) {
         Mood moodToUpdate = moodRepository.findAll()
                 .stream()
-                .filter(m -> (m.getUser().getId()).equals(id))
-                .filter(m -> m.getMoodDate().equals(LocalDate.now()))
+                .filter(m -> (m.getId()).equals(id))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
         moodToUpdate.setMoodRate(moodRequestDTO.moodRate());
         moodToUpdate.setMoodDescription(moodRequestDTO.moodDescription());
         moodToUpdate.setMoodPicture(moodRequestDTO.moodPicture());
         moodToUpdate.setMoodMusic(moodRequestDTO.moodMusic());
-
+        moodToUpdate.setModified(LocalDate.now());
         return moodRepository.save(moodToUpdate);
     }
 
@@ -93,6 +92,14 @@ public class MoodService {
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("No mood with this id"));
         moodRepository.delete(moodToDelete);
+    }
+
+    public Mood getMoodById(Long postId) {
+        return moodRepository.findAll()
+                .stream()
+                .filter(mood -> mood.getId().equals(postId))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("No mood with this id."));
     }
 }
 

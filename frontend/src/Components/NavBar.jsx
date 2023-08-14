@@ -11,7 +11,7 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import {isUserSignedIn, signUserOut} from "../Tools/userTools.js";
+import {getUsername, isUserSignedIn, signUserOut} from "../Tools/userTools.js";
 import {Fragment, useState} from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
@@ -20,13 +20,18 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 
-const menuItems = {
+const menuItemLoggedIn = {
     'Home': <HomeIcon/>,
     'Calendar': <CalendarMonthIcon/>,
     'Goals': <EmojiEventsIcon/>,
     'Music': <LibraryMusicIcon/>,
     'Analytics': <AnalyticsIcon/>,
     'Profile': <AccountCircleIcon/>
+};
+
+const menuItemNotLoggedIn = {
+    'Home': <HomeIcon/>,
+    'Music': <LibraryMusicIcon/>
 };
 
 const anchor = "left"; // modify if menu else
@@ -47,26 +52,30 @@ export default function NavBar() {
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
             >
-                {Object.entries(menuItems).map(([text, icon]) => (
-                    <Fragment key={text}>
-                        <ListItem disablePadding onClick={() => {
-                            if (text === "Home") {
-                                navigate("/");
-                            } else {
-                                navigate(`/${text.toLowerCase()}`);
-                            }
-                        }}
-                        >
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {icon}
-                                </ListItemIcon>
-                                <ListItemText primary={text}/>
-                            </ListItemButton>
-                        </ListItem>
-                        <Divider/>
-                    </Fragment>
-                ))}
+                {
+                    Object.entries(getUsername() !== null
+                        ? menuItemLoggedIn
+                        : menuItemNotLoggedIn)
+                        .map(([text, icon]) => (
+                            <Fragment key={text}>
+                                <ListItem disablePadding onClick={() => {
+                                    if (text === "Home") {
+                                        navigate("/");
+                                    } else {
+                                        navigate(`/${text.toLowerCase()}`);
+                                    }
+                                }}
+                                >
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            {icon}
+                                        </ListItemIcon>
+                                        <ListItemText primary={text}/>
+                                    </ListItemButton>
+                                </ListItem>
+                                <Divider/>
+                            </Fragment>
+                        ))}
             </Box>
         )
     ;
@@ -74,13 +83,15 @@ export default function NavBar() {
     return (
         <>
             <Toolbar
-                style={{display: 'flex',
+                style={{
+                    display: 'flex',
                     justifyContent: 'space-between',
                     padding: "2vh",
                     alignItems: "stretch",
-                    backgroundColor: "#038c4c"}}>
+                    backgroundColor: "#038c4c"
+                }}>
                 <Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(true)} sx={{  fontSize: "20px"}}>MENU</Button>
+                    <Button onClick={toggleDrawer(true)} sx={{fontSize: "20px"}}>MENU</Button>
                     <SwipeableDrawer
                         anchor={anchor}
                         open={state}
