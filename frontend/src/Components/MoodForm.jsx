@@ -3,6 +3,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getTodaysPost} from "../API/postAPI.js";
 import {customIcons, IconContainer, StyledRating} from "./MoodRater.jsx";
+import {getUserId} from "../Tools/userTools.js";
 
 export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const handleMusicChange = (e) => setMusic(e.target.value);
     const handlePictureChange = (e) => setPicture(e.target.value);
     const handleMoodChange = async () => {
-        getTodaysPost()
+        getTodaysPost(getUserId())
             .then(res => navigate(`/updatePost/${res.id}`))
     }
 
@@ -42,7 +43,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                     </Typography>
                     <StyledRating
                         name="highlight-selected-only"
-                        defaultValue={postToUpdate ? postToUpdate.moodRate : rate.toString()}
+                        defaultValue={postToUpdate ? postToUpdate.moodRate : parseInt(rate)}
                         IconContainerComponent={IconContainer}
                         getLabelText={(value) => customIcons[value].label}
                         highlightSelectedOnly

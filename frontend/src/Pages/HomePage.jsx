@@ -31,7 +31,7 @@ export default function HomePage() {
             </Container>
             <Container align="center" sx={{padding: '1rem'}}>
                 <Button
-                    class="button-add"
+                    className="button-add"
                     size="large"
                     onClick={() => navigate('/createPost')}
                 >
