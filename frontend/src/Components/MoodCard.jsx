@@ -1,6 +1,8 @@
 import {Box, Button, Card, CardContent, Typography} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export const MoodCard = ({mood}) => {
+    const navigate = useNavigate();
     return (
         <Card
             sx={{
@@ -49,7 +51,10 @@ export const MoodCard = ({mood}) => {
                         Picture: {mood.moodPicture}
                     </Typography>
                 </CardContent>
-                <Button sx={{fontWeight: "bold"}}>
+                <Button sx={{fontWeight: "bold"}}
+                        onClick={() => {
+                            navigate(`/updatePost/${mood.id}`);
+                        }}>
                     Update
                 </Button>
             </Box>
