@@ -7,8 +7,9 @@ export const themeOptions = {
             main: '#038c4c',
         },
         background: {
-            default: '#FFFFFF',
+            default: '#e9fff1',
             paper: '#E6F7E9',
+            button: '#026c3a'
         },
         text: {
             primary: '#038c4c',
