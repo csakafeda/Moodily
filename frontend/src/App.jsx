@@ -25,7 +25,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/createPost" element={<CreatePost />} />
-                        <Route path="/updatePost" element={<UpdatePost />} />
+                        <Route path="/updatePost/:postId" element={<UpdatePost />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/analytics" element={<AnalyticsPage />} />
                         <Route path="/calendar" element={<Calendar />} />
