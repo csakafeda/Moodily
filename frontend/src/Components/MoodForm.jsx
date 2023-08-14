@@ -1,25 +1,15 @@
-import {Box, Button, Container, FormControl, Rating, styled, TextField, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Box, Button, Container, FormControl, TextField, Typography} from "@mui/material";
+import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {getTodaysPost} from "../API/postAPI.js";
+import {customIcons, IconContainer, StyledRating} from "./MoodRater.jsx";
 
 export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const navigate = useNavigate();
     const [text, setText] = useState("");
-    const [rate, setRate] = useState("");
+    const [rate, setRate] = useState(0);
     const [music, setMusic] = useState("");
     const [picture, setPicture] = useState("");
-
-    const StyledRating = styled(Rating)({
-        '& .MuiRating-iconFilled': {
-            color: '#ff6d75',
-        },
-        '& .MuiRating-iconHover': {
-            color: '#ff3d47',
-        },
-    });
 
     const handleRateChange = (e) => setRate(e.target.value);
     const handleTextChange = (e) => setText(e.target.value);
@@ -34,10 +24,6 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
         e.preventDefault();
         return onSave({rate, text, music, picture});
     };
-
-    useEffect(() => {
-        console.log(postToUpdate)
-    }, [postToUpdate]);
 
     return (
         <>
@@ -55,14 +41,12 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         How are you feel today?
                     </Typography>
                     <StyledRating
-                        labelid="rate"
-                        getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                        name="highlight-selected-only"
+                        defaultValue={postToUpdate ? postToUpdate.moodRate : rate.toString()}
+                        IconContainerComponent={IconContainer}
+                        getLabelText={(value) => customIcons[value].label}
+                        highlightSelectedOnly
                         onChange={handleRateChange}
-                        icon={<FavoriteIcon fontSize="inherit"/>}
-                        emptyIcon={<FavoriteBorderIcon fontSize="inherit"
-                                                       required/>
-                        }
-                        defaultValue={postToUpdate ? postToUpdate.moodRate : rate}
                     />
                 </FormControl>
 

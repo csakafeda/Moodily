@@ -1,6 +1,6 @@
-import {Box, Button, Container, Typography} from "@mui/material";
+import {Button, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import catPic from "../public/ca.png";
+import "./button.css"
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -8,11 +8,6 @@ export default function HomePage() {
     return (
         <>
             <Container sx={{padding: "1rem", display: "flex"}}>
-                <Box component="img"
-                     sx={{width: "40vw", borderRadius: '30%', maxWidth: "20vw"}}
-                     alt="Logo."
-                     src={catPic}
-                />
                 <Container>
                     <Typography sx={{padding: "1rem", fontSize: '1.5rem'}}>
                         Welcome to Moodily,
@@ -36,18 +31,7 @@ export default function HomePage() {
             </Container>
             <Container align="center" sx={{padding: '1rem'}}>
                 <Button
-                    align="center"
-                    sx={{
-                        color: 'red',
-                        backgroundColor: 'black',
-                        fontSize: '10vh',
-                        width: '20vh',
-                        height: '20vh',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
+                    class="button-add"
                     size="large"
                     onClick={() => navigate('/createPost')}
                 >

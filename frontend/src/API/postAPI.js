@@ -9,7 +9,7 @@ export const getPostById = (id) => {
         .then((res) => res.json());
 }
 export const getTodaysPost = () => {
-    return fetch(`/api/today`)
+    return fetch(`/api/today/${getUserId()}`)
         .then((res) => res.json());
 }
 

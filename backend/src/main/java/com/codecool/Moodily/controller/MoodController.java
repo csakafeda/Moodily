@@ -30,7 +30,7 @@ public class MoodController {
         return moodService.getAllMoodsByUserId(userId);
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("post/{id}")
     public Mood getMoodById(@PathVariable("id") Long postId) {
         return moodService.getMoodById(postId);
     }
@@ -43,10 +43,10 @@ public class MoodController {
         return moodService.saveMood(moodRequestDTO);
     }
 
-    @GetMapping("today")
-    public Mood getTodaysMood() {
+    @GetMapping("today/{userId}")
+    public Mood getTodaysMood(@PathVariable("userId") Long userId) {
         try {
-            return moodService.getTodaysMood();
+            return moodService.getTodaysMood(userId);
         } catch (Exception exc) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "You have not posted today", exc);
         }
