@@ -21,6 +21,7 @@ public class Mood {
     private String moodMusic;
     private String moodPicture;
     private LocalDate created;
+    private LocalDate modified;
     private LocalDate moodDate;
     @ManyToOne
     @JsonIgnore

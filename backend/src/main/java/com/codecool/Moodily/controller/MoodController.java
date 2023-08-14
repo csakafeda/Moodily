@@ -26,8 +26,13 @@ public class MoodController {
     }
 
     @GetMapping("/{id}")
-    public List<Mood> getAllMoodByUserId(@PathVariable("id") Long userId){
+    public List<Mood> getAllMoodByUserId(@PathVariable("id") Long userId) {
         return moodService.getAllMoodsByUserId(userId);
+    }
+
+    @GetMapping("/post/{id}")
+    public Mood getMoodById(@PathVariable("id") Long postId) {
+        return moodService.getMoodById(postId);
     }
 
     @PostMapping
@@ -48,11 +53,11 @@ public class MoodController {
     }
 
     @PatchMapping("update/{id}")
-    public Mood patchTodaysMood(@PathVariable("id") Long id, MoodRequestDTO moodRequestDTO) {
+    public Mood patchTodaysMood(@PathVariable("id") Long id, @RequestBody MoodRequestDTO moodRequestDTO) {
         return moodService.updateTodaysMood(id, moodRequestDTO);
     }
 
-    @DeleteMapping( "delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteMood(@PathVariable("id") Long id) {
         moodService.deleteMood((id));
     }
