@@ -35,10 +35,6 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
         return onSave({rate, text, music, picture});
     };
 
-    useEffect(() => {
-        console.log(postToUpdate)
-    }, [postToUpdate]);
-
     return (
         <>
             <Box onSubmit={onSubmit} component={"form"} sx={{
