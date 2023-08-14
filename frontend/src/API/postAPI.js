@@ -4,9 +4,13 @@ export const getAllPost = () => {
     return fetch(`/api/${getUserId()}`)
         .then((res) => res.json());
 }
+export const getPostById = (id) => {
+    return fetch(`/api/post/${id}`)
+        .then((res) => res.json());
+}
 
-export const updateReport = (postData) => {
-    return fetch(`/api/update/${postData.id}`, {
+export const updateReport = (postId, postData) => {
+    return fetch(`/api/update/${postId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -14,8 +18,8 @@ export const updateReport = (postData) => {
         body: JSON.stringify({
             "moodRate": postData.rate,
             "moodDescription": postData.text,
-            "moodPicture": postData.music,
-            "moodMusic": postData.picture
+            "moodPicture": postData.picture,
+            "moodMusic": postData.music
         })
     })
 }
