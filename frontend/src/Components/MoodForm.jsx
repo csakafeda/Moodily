@@ -1,5 +1,5 @@
 import {Box, Button, Container, FormControl, Rating, styled, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -35,6 +35,10 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
         return onSave({rate, text, music, picture});
     };
 
+    useEffect(() => {
+        console.log(postToUpdate)
+    }, [postToUpdate]);
+
     return (
         <>
             <Box onSubmit={onSubmit} component={"form"} sx={{
@@ -58,6 +62,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         emptyIcon={<FavoriteBorderIcon fontSize="inherit"
                                                        required/>
                         }
+                        defaultValue={postToUpdate ? postToUpdate.moodRate : rate}
                     />
                 </FormControl>
 
@@ -65,7 +70,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                     <TextField
                         label="What happened with you today?"
                         id="text"
-                        value={postToUpdate ? postToUpdate.text : text}
+                        defaultValue={postToUpdate ? postToUpdate.moodDescription : text}
                         onChange={handleTextChange}
                     ></TextField>
                 </FormControl>
@@ -75,7 +80,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         label="Which music represent your day?"
                         id="music"
                         onChange={handleMusicChange}
-                        value={postToUpdate ? postToUpdate.music : music}
+                        defaultValue={postToUpdate ? postToUpdate.moodMusic : music}
                     ></TextField>
                 </FormControl>
 
@@ -84,7 +89,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         label="Add picture?"
                         id="picture"
                         onChange={handlePictureChange}
-                        value={postToUpdate ? postToUpdate.picture : picture}
+                        defaultValue={postToUpdate ? postToUpdate.moodPicture : picture}
                     ></TextField>
                 </FormControl>
 
