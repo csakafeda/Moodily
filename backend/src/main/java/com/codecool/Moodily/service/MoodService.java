@@ -66,8 +66,8 @@ public class MoodService {
     public Mood getTodaysMood(Long userId) {
         return moodRepository.findAll()
                 .stream()
-                .filter(m -> m.getUser().getId().equals(userId))
                 .filter(m -> m.getMoodDate().equals(LocalDate.now()))
+                .filter(m -> m.getUser().getId().equals(userId))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("You have not posted today."));
     }

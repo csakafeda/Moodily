@@ -6,14 +6,14 @@ import {getUsername} from "../Tools/userTools.js";
 import {MoodCard} from "../Components/MoodCard.jsx";
 
 export default function ProfilePage() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(() => {
         setLoading(true);
         getAllPost()
             .then((res) => setData(res))
-            .finally(setLoading(false));
+            .finally(() => setLoading(false));
     }, []);
 
     if (loading) return <Loading/>;
@@ -24,7 +24,7 @@ export default function ProfilePage() {
                 <Container align="center" sx={{padding: "1rem"}}>
                     <Typography sx={{fontSize: "5vh"}}>Profile page</Typography>
                     Username: {getUsername()}
-                    {data.length === 0
+                    {(data.length === 0)
                         ? <div style={{paddingTop: "10vh", fontSize: "4vh", color: "red"}}>
                             You have not posted yet.
                         </div>

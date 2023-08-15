@@ -1,6 +1,7 @@
 import {Button, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import "./button.css"
+import {getUserId} from "../Tools/userTools.js";
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -29,15 +30,18 @@ export default function HomePage() {
                     </Typography>
                 </Container>
             </Container>
-            <Container align="center" sx={{padding: '1rem'}}>
-                <Button
-                    class="button-add"
-                    size="large"
-                    onClick={() => navigate('/createPost')}
-                >
-                    +
-                </Button>
-            </Container>
+            {getUserId() !== null
+                ?
+                <Container align="center" sx={{padding: '1rem'}}>
+                    <Button
+                        className="button-add"
+                        size="large"
+                        onClick={() => navigate('/createPost')}
+                    >
+                        +
+                    </Button>
+                </Container>
+                : <></>}
         </>
     )
 }
