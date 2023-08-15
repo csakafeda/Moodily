@@ -19,6 +19,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import MenuIcon from "@mui/icons-material/Menu";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const menuItemLoggedIn = {
     'Home': <HomeIcon/>,
@@ -45,40 +47,50 @@ export default function NavBar() {
     };
 
     const navigate = useNavigate();
+    const isMobileScreen = useMediaQuery("(max-width:600px)");
     const list = () => (
-            <Box
-                sx={{width: 250}}
-                role="presentation"
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
-            >
-                {
-                    Object.entries(getUsername() !== null
-                        ? menuItemLoggedIn
-                        : menuItemNotLoggedIn)
-                        .map(([text, icon]) => (
-                            <Fragment key={text}>
-                                <ListItem disablePadding onClick={() => {
-                                    if (text === "Home") {
-                                        navigate("/");
-                                    } else {
-                                        navigate(`/${text.toLowerCase()}`);
-                                    }
-                                }}
-                                >
-                                    <ListItemButton>
-                                        <ListItemIcon>
-                                            {icon}
-                                        </ListItemIcon>
-                                        <ListItemText primary={text}/>
-                                    </ListItemButton>
-                                </ListItem>
-                                <Divider/>
-                            </Fragment>
-                        ))}
-            </Box>
-        )
-    ;
+        <Box
+            sx={{width: 250}}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+        >
+            <div style={{display: "flex", flexDirection: "column", height: "100%"}}>
+                {Object.entries(
+                    getUsername() !== null ? menuItemLoggedIn : menuItemNotLoggedIn
+                ).map(([text, icon]) => (
+                    <Fragment key={text}>
+                        <ListItem
+                            disablePadding
+                            onClick={() => {
+                                if (text === "Home") {
+                                    navigate("/");
+                                } else {
+                                    navigate(`/${text.toLowerCase()}`);
+                                }
+                            }}
+                            sx={{
+                                padding: "5vh",
+                                fontSize: "2rem",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                "&:hover": {
+                                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                                },
+                            }}
+                        >
+                            <ListItemButton>
+                                <ListItemIcon>{icon}</ListItemIcon>
+                                <ListItemText primary={text}/>
+                            </ListItemButton>
+                        </ListItem>
+                        <Divider/>
+                    </Fragment>
+                ))}
+            </div>
+        </Box>
+    );
 
     return (
         <>
@@ -86,12 +98,14 @@ export default function NavBar() {
                 style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    padding: "2vh",
+                    padding: "1rem",
                     alignItems: "stretch",
                     backgroundColor: "#038c4c"
                 }}>
                 <Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(true)} sx={{fontSize: "20px"}}>MENU</Button>
+                    <Button onClick={toggleDrawer(true)} sx={{fontSize: "2rem"}}>
+                        <MenuIcon/>
+                    </Button>
                     <SwipeableDrawer
                         anchor={anchor}
                         open={state}
