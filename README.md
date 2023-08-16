@@ -23,7 +23,7 @@ The idea was, that the people cannot really tell how they feel themself, also li
 - Open the backend folder and run ```mvn spring-boot:run``` to start the Spring Boot server
 - Open the frontend folder and run ```npm install``` to install the necessary dependencies
 - Run ```npm run dev``` to start the React server
-- Open **localhost:3000** in your browser to access Moodily application
+- Open **http://localhost:5173/** in your browser to access Moodily application
 
 [linkedin-shield-csakafeda]: https://img.shields.io/badge/-Feodóra%20Bakó-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-csakafeda]: https://www.linkedin.com/in/feodorabako/
