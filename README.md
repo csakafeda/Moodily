@@ -4,8 +4,8 @@
 
 ### About the project
 
-This application to record and track people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, and improve their overall well-being, also motivate themself.
-The idea was, that the people cannot really tell how they feel themself, also live in the moment, more like in the past or future. 
+This application to record and track people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, improve their overall well-being, also motivate themself. 
+The idea was, that people cannot really tell how they feel themself, also live in the moment, more like in the past or future.
 
 ### Built With
 
@@ -18,12 +18,12 @@ The idea was, that the people cannot really tell how they feel themself, also li
 ### Installation
 
 - Clone the repository
-- Create table in postgreSQL, named: daily_vibe
-- Add environmental variables at backend (USERNAME=yourusername; PASSWORD=yourpassword)
+- Create a table in PostgreSQL, named: daily_vibe
+- Add environmental variables at the backend for the database (USERNAME=yourusername; PASSWORD=yourpassword)
 - Open the backend folder and run ```mvn spring-boot:run``` to start the Spring Boot server
 - Open the frontend folder and run ```npm install``` to install the necessary dependencies
 - Run ```npm run dev``` to start the React server
-- Open **http://localhost:5173/** in your browser to access Moodily application
+- Open http://localhost:5173 in your browser to access the Moodily application
 
 [linkedin-shield-csakafeda]: https://img.shields.io/badge/-Feodóra%20Bakó-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-csakafeda]: https://www.linkedin.com/in/feodorabako/
