@@ -4,8 +4,8 @@
 
 ### About the project
 
-This application to record and track people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, improve their overall well-being, also motivate themself. 
-The idea was, that people cannot really tell how they feel themself, also live in the moment, more like in the past or future.
+This application records and tracks people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, improve their overall well-being, also motivate themself. 
+The idea was, that people cannot tell how they feel themself, but also live in the moment, more like in the past or future.
 
 ### Built With
 
