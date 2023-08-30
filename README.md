@@ -2,6 +2,8 @@
 
 # Moodily
 
+![Image](https://github.com/csakafeda/Moodily/assets/105170258/cd254e31-f034-43b4-9eb1-1bd33eb45fa9)
+
 ### About the project
 
 This application records and tracks people's daily emotions and experiences. It can help people become more aware of their emotional state, gain insights into their feelings, improve their overall well-being, also motivate themself. 
