@@ -17,9 +17,10 @@ The idea was, that people cannot tell how they feel themself, but also live in t
 [![SpringBoot][SpringBoot-badge]][Spring-url]
 [![PostgreSQL][PostgreSQL-badge]][PostgreSQL-url]
 
-### Installation
+### Building & Running
 
 - Clone the repository
+- Create a database in PostgreSQL
 - Create a table in PostgreSQL, named: daily_vibe
 - Add environmental variables at the backend for the database (USERNAME=yourusername; PASSWORD=yourpassword)
 - Open the backend folder and run ```mvn spring-boot:run``` to start the Spring Boot server
