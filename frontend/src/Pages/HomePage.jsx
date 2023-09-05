@@ -16,8 +16,6 @@ export default function HomePage() {
                         </Typography>
                         <Typography className="hero-subtitle">
                             Monitor your mental health effortlessly.
-                        </Typography>
-                        <Typography className="hero-subtitle">
                             Track your daily mood, log a brief description, and access curated music to uplift your
                             spirits.
                         </Typography>
@@ -33,41 +31,57 @@ export default function HomePage() {
                 </Container>
             </Container>
 
-            <Container className="section why-moodily">
+            <Container className="why-moodily">
+                <div className="divider"></div>
                 <Typography variant="h4" className="section-title">
                     Why Moodily?
                 </Typography>
-                <ul className="section-list">
-                    <li>
-                        🎈 Daily Fragmentation Begone: Say goodbye to the fragmentation of your thoughts and emotions!
-                        With Moodily, you&rsquo;ll have a safe space to collect the scattered pieces of your day and
-                        make sense of them.
-                    </li>
-                    <li>
-                        🌈 Track Your Mood: Our user-friendly interface makes it a breeze to log your daily emotions.
-                        Whether you&rsquo;re over the moon, feeling meh, or having a tough day, Moodily has got your
-                        back.
-                    </li>
-                    <li>
-                        📊 Visualize Your Journey: Watch your mood evolve over time with our beautiful, easy-to-read
-                        graphs and charts. It&rsquo;s like creating a masterpiece out of your daily experiences.
-                    </li>
-                    <li>
-                        🤝 Community Connection: Connect with like-minded Moodiliers in our supportive community. Share
-                        your journey, lend an ear, and find solace in the fact that you&rsquo;re not alone in this
-                        emotional rollercoaster.
-                    </li>
-                    <li>
-                        🔒 Privacy First: Your mood is your business. We take privacy seriously, ensuring your data is
-                        secure and only seen by you.
-                    </li>
-                </ul>
+                <div className="divider"></div>
+                <div>
+                    <div className="feature-row">
+                        <div className="feature-left">
+                            <span className="home-icons">🎈 </span>
+                            <strong> Daily Fragmentation Begone</strong>
+                            <p>Say goodbye to the fragmentation of your thoughts and emotions!
+                                With Moodily, you&rsquo;ll have a safe space to collect the scattered pieces of your day
+                                and
+                                make sense of them.</p>
+                        </div>
+                        <div className="feature-right">
+                            <span className="home-icons"> 🌈 </span>
+                            <strong> Track Your Mood</strong>
+                            <p>Our user-friendly interface makes it a breeze to log your daily emotions.
+                                Whether you&rsquo;re over the moon, feeling meh, or having a tough day, Moodily has got
+                                your
+                                back.</p>
+                        </div>
+                    </div>
+                    <div className="feature-row">
+                        <div className="feature-left">
+                            <span className="home-icons">📊 </span>
+                            <strong> Visualize Your Journey</strong>
+                            <p>Watch your mood evolve over time with our beautiful, easy-to-read
+                                graphs and charts. It&rsquo;s like creating a masterpiece out of your daily
+                                experiences.</p>
+                        </div>
+                        <div className="feature-right">
+                            <span className="home-icons"> 🤝 </span>
+                            <strong> Community Connection</strong>
+                            <p>Connect with like-minded Moodiliers in our supportive community. Share
+                                your journey, lend an ear, and find solace in the fact that you&rsquo;re not alone in
+                                this
+                                emotional rollercoaster.</p>
+                        </div>
+                    </div>
+                </div>
             </Container>
 
             <Container className="section how-it-works">
+                <div className="divider"></div>
                 <Typography variant="h4" className="section-title">
                     How it works:
                 </Typography>
+                <div className="divider"></div>
                 <ul className="section-list">
                     <li>
                         Log In: Sign up and create your Moodily account. It&rsquo;s quick and easy.
@@ -96,16 +110,6 @@ export default function HomePage() {
                     Sign up now and let&rsquo;s ride the waves of life together! 🌊🚀
                 </p>
             </Container>
-
-            {getUserId() !== null ? (
-                <Container align="center" sx={{padding: "2rem"}}>
-                    <Button size="large" onClick={() => navigate("/createPost")}>
-                        +
-                    </Button>
-                </Container>
-            ) : (
-                <></>
-            )}
         </div>
     );
 }
