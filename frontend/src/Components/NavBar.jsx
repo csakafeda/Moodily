@@ -20,7 +20,6 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import MenuIcon from "@mui/icons-material/Menu";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const menuItemLoggedIn = {
     'Home': <HomeIcon/>,
@@ -47,7 +46,6 @@ export default function NavBar() {
     };
 
     const navigate = useNavigate();
-    const isMobileScreen = useMediaQuery("(max-width:600px)");
     const list = () => (
         <Box
             sx={{width: 250}}
@@ -117,7 +115,11 @@ export default function NavBar() {
                 </Fragment>
                 <Typography
                     color="primary"
-                    sx={{cursor: "pointer", alignItem: "center", fontSize: "3rem"}}
+                    sx={{
+                        cursor: "pointer",
+                        alignItem: "center",
+                        fontFamily: "Indie Flower",
+                        fontSize: "3.125rem"}}
                     onClick={() => navigate("/")}
                 >
                     Moodily
