@@ -76,13 +76,13 @@ export default function HomePage() {
                 </div>
             </Container>
 
-            <Container className="section how-it-works">
+            <Container className="how-it-works">
                 <div className="divider"></div>
                 <Typography variant="h4" className="section-title">
                     How it works:
                 </Typography>
                 <div className="divider"></div>
-                <ul className="section-list">
+                <div className="section section-list">
                     <li>
                         Log In: Sign up and create your Moodily account. It&rsquo;s quick and easy.
                     </li>
@@ -101,15 +101,17 @@ export default function HomePage() {
                         Grow Together: Join our community, where we uplift and support one another through life&rsquo;s
                         ups and downs.
                     </li>
-                </ul>
-                <p className="section-text">
-                    Ready to start your mood-tracking adventure and bring some order to life&rsquo;s delightful chaos?
-                    Join Moodily today and let&rsquo;s create a brighter, more balanced you, one mood at a time. 🌞✨
-                </p>
-                <p className="section-text">
-                    Sign up now and let&rsquo;s ride the waves of life together! 🌊🚀
-                </p>
+                    <p className="section-text">
+                        Ready to start your mood-tracking adventure and bring some order to life&rsquo;s delightful
+                        chaos?
+                        Join Moodily today and let&rsquo;s create a brighter, more balanced you, one mood at a time. 🌞✨
+                    </p>
+                    <p className="section-text">
+                        <a href={"/signup"}>Sign up</a> now and let&rsquo;s ride the waves of life together! 🌊🚀
+                    </p>
+                </div>
             </Container>
+
         </div>
     );
 }
