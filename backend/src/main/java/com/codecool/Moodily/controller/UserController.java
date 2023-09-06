@@ -28,7 +28,7 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @GetMapping("postDates/{userI   d}")
+    @GetMapping("postDates/{userId}")
     public List<LocalDate> getAllPostDate(@PathVariable Long userId){
         return userService.getAllPostDate(userId);
     }
