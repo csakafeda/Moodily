@@ -7,11 +7,10 @@ import {getUserId} from "../Tools/userTools.js";
 
 export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const navigate = useNavigate();
-    const [text, setText] = useState("");
-    const [rate, setRate] = useState(0);
-    const [music, setMusic] = useState("");
-    const [picture, setPicture] = useState("");
-
+    const [text, setText] = useState(postToUpdate ? postToUpdate.moodDescription : "");
+    const [rate, setRate] = useState(postToUpdate ? parseInt(postToUpdate.moodRate) : 0);
+    const [music, setMusic] = useState(postToUpdate ? postToUpdate.moodMusic : "");
+    const [picture, setPicture] = useState(postToUpdate ? postToUpdate.moodPicture : "");
     const handleRateChange = (e) => setRate(e.target.value);
     const handleTextChange = (e) => setText(e.target.value);
     const handleMusicChange = (e) => setMusic(e.target.value);
@@ -23,7 +22,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        return onSave({rate, text, music, picture});
+        return onSave({"rate": rate, "text": text, "music": music, "picture": picture});
     };
 
     return (
@@ -43,7 +42,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                     </Typography>
                     <StyledRating
                         name="highlight-selected-only"
-                        defaultValue={postToUpdate ? postToUpdate.moodRate : parseInt(rate)}
+                        defaultValue={rate}
                         IconContainerComponent={IconContainer}
                         getLabelText={(value) => customIcons[value].label}
                         highlightSelectedOnly
@@ -55,7 +54,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                     <TextField
                         label="What happened with you today?"
                         id="text"
-                        defaultValue={postToUpdate ? postToUpdate.moodDescription : text}
+                        defaultValue={text}
                         onChange={handleTextChange}
                     ></TextField>
                 </FormControl>
@@ -65,7 +64,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         label="Which music represent your day?"
                         id="music"
                         onChange={handleMusicChange}
-                        defaultValue={postToUpdate ? postToUpdate.moodMusic : music}
+                        defaultValue={music}
                     ></TextField>
                 </FormControl>
 
@@ -74,7 +73,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         label="Add picture?"
                         id="picture"
                         onChange={handlePictureChange}
-                        defaultValue={postToUpdate ? postToUpdate.moodPicture : picture}
+                        defaultValue={picture}
                     ></TextField>
                 </FormControl>
 
