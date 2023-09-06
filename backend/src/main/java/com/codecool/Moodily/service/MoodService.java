@@ -102,5 +102,6 @@ public class MoodService {
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("No mood with this id."));
     }
+
 }
 
