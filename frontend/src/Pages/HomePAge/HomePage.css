@@ -13,7 +13,7 @@
 }
 
 .hero {
-    background-image: url("../pictures/home_pic.jpg");
+    background-image: url("../../pictures/home_pic.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -107,6 +107,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.feature-left {
+    animation: slideFromLeft 1s ease-in;
+}
+
+.feature-right {
+    animation: slideFromRight 1s ease-in;
+}
+
 .home-icons {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -125,3 +133,23 @@
         max-width: 100%;
     }
 }
+
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-300px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(300px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+

@@ -1,10 +1,17 @@
 import {Button, Container, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {getUserId} from "../Tools/userTools.js";
-import "./HomePage.css"; // Import a CSS file for additional styles
+import {getUserId} from "../../Tools/userTools.js";
+import "./HomePage.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {useEffect} from "react";
 
 export default function HomePage() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init({duration: 2000})
+    }, []);
 
     return (
         <div className="home-page">
@@ -39,7 +46,7 @@ export default function HomePage() {
                 <div className="divider"></div>
                 <div>
                     <div className="feature-row">
-                        <div className="feature-left">
+                        <div className="feature-left" data-aos="fade-right">
                             <span className="home-icons">🎈 </span>
                             <strong> Daily Fragmentation Begone</strong>
                             <p>Say goodbye to the fragmentation of your thoughts and emotions!
@@ -47,7 +54,7 @@ export default function HomePage() {
                                 and
                                 make sense of them.</p>
                         </div>
-                        <div className="feature-right">
+                        <div className="feature-right" data-aos="fade-left">
                             <span className="home-icons"> 🌈 </span>
                             <strong> Track Your Mood</strong>
                             <p>Our user-friendly interface makes it a breeze to log your daily emotions.
@@ -57,14 +64,14 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="feature-row">
-                        <div className="feature-left">
+                        <div className="feature-left" data-aos="fade-right">
                             <span className="home-icons">📊 </span>
                             <strong> Visualize Your Journey</strong>
                             <p>Watch your mood evolve over time with our beautiful, easy-to-read
                                 graphs and charts. It&rsquo;s like creating a masterpiece out of your daily
                                 experiences.</p>
                         </div>
-                        <div className="feature-right">
+                        <div className="feature-right" data-aos="fade-left">
                             <span className="home-icons"> 🤝 </span>
                             <strong> Community Connection</strong>
                             <p>Connect with like-minded Moodiliers in our supportive community. Share
@@ -73,16 +80,48 @@ export default function HomePage() {
                                 emotional rollercoaster.</p>
                         </div>
                     </div>
+                    <div className="feature-row">
+                        <div className="feature-left" data-aos="fade-right">
+                            <span className="home-icons">🌟 </span>
+                            <strong>Set Personal Goals</strong>
+                            <p>Define your aspirations and goals, both big and small, and track your progress
+                                with Moodily. Stay motivated and take meaningful steps towards achieving the life you
+                                desire.</p>
+                        </div>
+                        <div className="feature-right" data-aos="fade-left">
+                            <span className="home-icons"> 💌 </span>
+                            <strong>Journal Your Thoughts</strong>
+                            <p>Express yourself freely through our digital journal. Write down your thoughts,
+                                reflections, and dreams. Let Moodily be your trusted companion in your personal growth
+                                journey.</p>
+                        </div>
+                    </div>
+                    <div className="feature-row">
+                        <div className="feature-left" data-aos="fade-right">
+                            <span className="home-icons">🌞 </span>
+                            <strong>Start Your Day Positively</strong>
+                            <p>Begin each day with positivity by setting daily affirmations and intentions.
+                                Moodily helps you start your day with a smile and a positive mindset, ready to conquer
+                                any challenges.</p>
+                        </div>
+                        <div className="feature-right" data-aos="fade-left">
+                            <span className="home-icons"> 📈 </span>
+                            <strong>Track Progress & Achievements</strong>
+                            <p>Celebrate your victories, no matter how small, and see how far you&rsquo;ve come.
+                                Moodily&rsquo;s tracking features allow you to visualize your personal growth journey and
+                                cherish your accomplishments.</p>
+                        </div>
+                    </div>
                 </div>
             </Container>
 
             <Container className="how-it-works">
-                <div className="divider"></div>
-                <Typography variant="h4" className="section-title">
-                    How it works:
+                <div className="divider" ></div>
+                <Typography variant="h4" className="section-title how-it-work" data-aos="zoom-in">
+                    <span>How it works: </span>
                 </Typography>
                 <div className="divider"></div>
-                <div className="section section-list">
+                <div className="section section-list" data-aos="zoom-in"  >
                     <li>
                         Log In: Sign up and create your Moodily account. It&rsquo;s quick and easy.
                     </li>
