@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -60,6 +61,11 @@ public class MoodController {
     @DeleteMapping("delete/{id}")
     public void deleteMood(@PathVariable("id") Long id) {
         moodService.deleteMood((id));
+    }
+
+    @GetMapping("date/{userId}/{date}")
+    public Optional<Mood> getMoodByUserIdAndDate(@PathVariable("userId") Long userId, @PathVariable("date") LocalDate date) {
+        return moodService.getMoodByUserIdAndDate(userId, date);
     }
 
 }
