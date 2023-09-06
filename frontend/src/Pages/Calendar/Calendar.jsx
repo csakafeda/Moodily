@@ -1,14 +1,13 @@
 import {useEffect, useState} from 'react';
 import CalendarR from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import './Calendar.css';
 import {Typography} from "@mui/material";
 import {getPostDates} from "../../API/userAPI.js";
-import {getUserId} from "../../Tools/userTools.js";
-import "./Calendar.css"
-import Loading from "../../Components/Loading.jsx";
 import {getPostByDateAndUserId} from "../../API/postAPI.js";
+import {getUserId} from "../../Tools/userTools.js";
+import Loading from "../../Components/Loading.jsx";
 import {MoodCard} from "../../Components/MoodCard.jsx";
+import 'react-calendar/dist/Calendar.css';
+import './Calendar.css';
 
 const Calendar = () => {
     const [value, setValue] = useState(new Date());
@@ -25,7 +24,6 @@ const Calendar = () => {
 
     useEffect(() => {
         setLoading(true);
-        console.log(value.toISOString().substring(0, 10))
         getPostByDateAndUserId(value.toISOString().substring(0, 10), getUserId())
             .then(res => res == null ? null : setMood(res))
             .finally(() => setLoading(false));
