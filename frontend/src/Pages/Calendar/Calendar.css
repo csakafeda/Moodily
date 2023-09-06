@@ -1,0 +1,51 @@
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+}
+
+.calendar-title {
+    margin-bottom: 16px;
+    font-size: 1.5rem/* calendar.css */
+
+        /* Style the days in the calendar */
+    .react-calendar .react-calendar__tile {
+    font-size: 14px;
+    padding: 8px;
+    text-align: center;
+}
+
+    /* Style the selected date */
+    .react-calendar .react-calendar__tile--active {
+        background-color: #007bff; /* Customize the background color */
+        color: #fff; /* Customize the text color */
+    }
+
+    /* Style the navigation buttons */
+    .react-calendar button.react-calendar__navigation__label {
+        font-size: 16px;
+        color: #007bff; /* Customize the text color */
+    }
+
+    /* Style the date picker container */
+    .react-calendar {
+        border: 1px solid #ccc; /* Customize the border */
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* Customize the background color */
+    }
+
+    font-weight: bold;
+}
+
+.calendar-wrapper {
+    max-width: 400px; /* Adjust the width as needed */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.selected-date {
+    font-size: 1rem;
+    margin-top: 16px;
+}
