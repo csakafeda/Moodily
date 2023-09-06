@@ -52,3 +52,8 @@ export const addPost = (postData, setError, navigate) => {
             }
         });
 }
+
+export const getPostByDateAndUserId = (date, userId) => {
+    return fetch(`/api//date/${userId}/${date}`)
+        .then((res) => res.json());
+    }
