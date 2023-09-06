@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import HomePage from "./Pages/HomePAge/HomePage.jsx";
+import HomePage from "./Pages/HomePage/HomePage.jsx";
 import NavBar from "./Components/NavBar.jsx";
 import ProfilePage from "./Pages/ProfilePage.jsx";
 import CreatePost from "./Pages/Post/CreatePost.jsx";

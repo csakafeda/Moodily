@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class MoodService {
@@ -101,6 +102,13 @@ public class MoodService {
                 .filter(mood -> mood.getId().equals(postId))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("No mood with this id."));
+    }
+
+    public Optional<Mood> getMoodByUserIdAndDate(Long userId, LocalDate date) {
+        List<Mood> usersMoods = getAllMoodsByUserId(userId);
+        return usersMoods.stream()
+                .filter(m -> m.getCreated().equals(date))
+                .findFirst();
     }
 }
 

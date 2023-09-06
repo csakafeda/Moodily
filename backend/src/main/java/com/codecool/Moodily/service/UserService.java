@@ -2,6 +2,7 @@ package com.codecool.Moodily.service;
 
 import com.codecool.Moodily.controller.UserNotFoundException;
 import com.codecool.Moodily.database.enums.Role;
+import com.codecool.Moodily.database.models.Mood;
 import com.codecool.Moodily.database.models.UserEntity;
 import com.codecool.Moodily.database.models.dto.DTOFactory;
 import com.codecool.Moodily.database.models.dto.UserDTO;
@@ -9,6 +10,7 @@ import com.codecool.Moodily.database.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,4 +50,11 @@ public class UserService {
         return null;
     }
 
+    public List<LocalDate> getAllPostDate(Long userId) {
+        UserEntity user = getUserById(userId);
+        return user.getMoodList()
+                .stream()
+                .map(Mood::getMoodDate)
+                .collect(Collectors.toList());
+    }
 }

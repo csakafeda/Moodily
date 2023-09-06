@@ -38,7 +38,7 @@ export default function HomePage() {
                 </Container>
             </Container>
 
-            <Container className="why-moodily">
+            <Container className="why-moodily"  data-aos="zoom-in">
                 <div className="divider"></div>
                 <Typography variant="h4" className="section-title">
                     Why Moodily?
@@ -115,9 +115,9 @@ export default function HomePage() {
                 </div>
             </Container>
 
-            <Container className="how-it-works">
+            <Container className="how-it-works"  data-aos="zoom-in">
                 <div className="divider" ></div>
-                <Typography variant="h4" className="section-title how-it-work" data-aos="zoom-in">
+                <Typography variant="h4" className="section-title how-it-work">
                     <span>How it works: </span>
                 </Typography>
                 <div className="divider"></div>

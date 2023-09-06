@@ -53,3 +53,8 @@ export const userSearcher = (id) => {
     return fetch(`/api/users/${id}`)
         .then((res) => res.json());
 }
+
+export const getPostDates = (id) => {
+    return fetch(`/api/users/postDates/${id}`)
+        .then((res) => res.json());
+}
