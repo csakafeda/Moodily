@@ -1,11 +1,11 @@
 import {Typography} from '@mui/material';
-import {SpotifyLogin} from "../../API/Spotify/SpotifyLogin.jsx";
+import {SpotifyPage} from "../../API/SpotifyAPI/SpotifyPage.jsx";
 
 const MusicPage = () => {
     return (
         <div>
             <Typography variant="h4">
-                <SpotifyLogin/>
+                <SpotifyPage/>
             </Typography>
 
         </div>
