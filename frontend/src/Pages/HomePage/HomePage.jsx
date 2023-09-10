@@ -46,7 +46,7 @@ export default function HomePage() {
                 <div className="divider"></div>
                 <div>
                     <div className="feature-row">
-                        <div className="feature-left" data-aos="fade-right">
+                        <div className="feature-left" data-aos="fade-right" >
                             <span className="home-icons">🎈 </span>
                             <strong> Daily Fragmentation Begone</strong>
                             <p>Say goodbye to the fragmentation of your thoughts and emotions!
