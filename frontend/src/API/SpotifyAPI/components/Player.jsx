@@ -18,6 +18,15 @@ export const Player = ({accessToken, trackUri}) => {
             }}
             play={play}
             uris={trackUri ? [trackUri] : []}
+            styles={{
+                bgColor: '#333',
+                color: '#fff',
+                loaderColor: '#fff',
+                sliderColor: '#1cb954',
+                savedColor: '#fff',
+                trackArtistColor: '#ccc',
+                trackNameColor: '#fff',
+            }}
         />
     )
 }

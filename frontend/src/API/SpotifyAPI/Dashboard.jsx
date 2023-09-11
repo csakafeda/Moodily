@@ -49,22 +49,57 @@ export const Dashboard = ({code}) => {
     }, [search, accessToken])
 
     return (
-        <Container style={{display: "flex", height: "100vh", flexDirection: "column"}}>
-            <input
-                type={"search"}
-                placeholder={"Search song/artist"}
-                value={search}
-                onChange={e => setSearch(e.target.value)}/>
-            <div style={{overflowY: "auto"}}>
-                {searchResults.map(song => (
-                    <SongCard track={song} key={song.uri} chooseTrack={chooseTrack}/>
-                ))
-
-                }
-            </div>
-            <div>
-                <Player accessToken={accessToken} trackUri={playingTrack?.uri}/>
-            </div>
+        <Container>
+            <h2 > Search a music and listen it here</h2>
+            <Container
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100vh",
+                    alignItems: "center",
+                    backgroundColor: "#2b835a",
+                    padding: "20px",
+                    marginTop: "2vh",
+                    borderRadius: "20px"
+                }}
+            >
+                <input
+                    type={"search"}
+                    placeholder={"Search song/artist"}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    style={{
+                        fontSize: "2rem",
+                        margin: "20px 0",
+                        padding: "10px",
+                        border: "2px solid #ccc",
+                        borderRadius: "5px",
+                        width: "80%",
+                    }}
+                />
+                <div
+                    style={{
+                        overflowY: "auto",
+                        maxHeight: "calc(100vh - 200px)",
+                        width: "80%",
+                    }}
+                >
+                    {searchResults.map((song) => (
+                        <SongCard track={song} key={song.uri} chooseTrack={chooseTrack}/>
+                    ))}
+                </div>
+                <div
+                    style={{
+                        position: "fixed",
+                        bottom: "0",
+                        width: "50%",
+                        backgroundColor: "#fff",
+                        boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
+                    }}
+                >
+                    <Player accessToken={accessToken} trackUri={playingTrack?.uri}/>
+                </div>
+            </Container>
         </Container>
-    )
+    );
 }

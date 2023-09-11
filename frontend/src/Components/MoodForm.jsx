@@ -67,7 +67,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         defaultValue={music}
                     ></TextField>
                 </FormControl>
-
+                {/*
                 <FormControl align="center" sx={{padding: "1rem"}}>
                     <TextField
                         label="Add picture?"
@@ -76,6 +76,8 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         defaultValue={picture}
                     ></TextField>
                 </FormControl>
+                */}
+
 
                 <Container align="center" sx={{padding: "1rem"}}>
                     <Button variant="contained" align="center" type={"submit"}>

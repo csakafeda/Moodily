@@ -1,5 +1,4 @@
-    const CLIENT_ID = "d65b7acbcf89421faada8ab7b50a0752";
-const CLIENT_SECRET = "f51208aaa4644ae7925b384378276882";
+const CLIENT_ID = "d65b7acbcf89421faada8ab7b50a0752";
 const REDIRECT_URL = "http://localhost:5173/music";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "code";
