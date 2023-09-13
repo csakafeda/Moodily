@@ -1,9 +1,10 @@
 import {Box, Button, Container, FormControl, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getTodaysPost} from "../API/postAPI.js";
 import {customIcons, IconContainer, StyledRating} from "./MoodRater.jsx";
 import {getUserId} from "../Tools/userTools.js";
+import {SpotifyPage} from "../API/SpotifyAPI/SpotifyPage.jsx";
 
 export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const navigate = useNavigate();
@@ -11,9 +12,16 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     const [rate, setRate] = useState(postToUpdate ? parseInt(postToUpdate.moodRate) : 0);
     const [music, setMusic] = useState(postToUpdate ? postToUpdate.moodMusic : "");
     const [picture, setPicture] = useState(postToUpdate ? postToUpdate.moodPicture : "");
+    const [selected, setSelected] = useState();
+
+    useEffect(() => {
+        handleMusicChange(selected);
+    }, [selected]);
     const handleRateChange = (e) => setRate(e.target.value);
     const handleTextChange = (e) => setText(e.target.value);
-    const handleMusicChange = (e) => setMusic(e.target.value);
+    const handleMusicChange = () => {
+        setMusic(selected);
+    }
     const handlePictureChange = (e) => setPicture(e.target.value);
     const handleMoodChange = async () => {
         getTodaysPost(getUserId())
@@ -22,7 +30,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        return onSave({"rate": rate, "text": text, "music": music, "picture": picture});
+        return onSave({"rate": rate, "text": text, "music": music.songUrl, "picture": picture});
     };
 
     return (
@@ -59,15 +67,17 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                     ></TextField>
                 </FormControl>
 
-                <FormControl align="center" sx={{padding: "1rem"}}>
-                    <TextField
-                        label="Which music represent your day?"
-                        id="music"
-                        onChange={handleMusicChange}
-                        defaultValue={music}
-                    ></TextField>
-                </FormControl>
 
+                <Typography>Which music represent your day?</Typography>
+                {
+                    selected &&
+                    <div>Selected music:
+                        <a href={selected.songUrl}>{musicDisplayer(selected)}</a>
+                    </div>
+                }
+
+                <SpotifyPage setSelected={setSelected}/>
+                {/*
                 <FormControl align="center" sx={{padding: "1rem"}}>
                     <TextField
                         label="Add picture?"
@@ -76,6 +86,8 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                         defaultValue={picture}
                     ></TextField>
                 </FormControl>
+                */}
+
 
                 <Container align="center" sx={{padding: "1rem"}}>
                     <Button variant="contained" align="center" type={"submit"}>
@@ -102,5 +114,10 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
 
             </Box>
         </>
-    );
+    )
+}
+
+const musicDisplayer = (track) => {
+    console.log(track.artist + "-" + track.title);
+    return track.artist + "-" + track.title;
 }

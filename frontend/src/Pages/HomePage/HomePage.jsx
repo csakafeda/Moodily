@@ -5,6 +5,7 @@ import "./HomePage.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {useEffect} from "react";
+import {getTodaysPost} from "../../API/postAPI.js";
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -28,7 +29,16 @@ export default function HomePage() {
                         </Typography>
                         <div className="cta-button">
                             <Button
-                                onClick={() => (getUserId() !== null ? navigate("/createPost") : navigate("/login"))}
+                                onClick={ async() => {
+                                    let user = getUserId();
+                                    let post = await getTodaysPost(user);
+                                    user == null
+                                        ? navigate("/login")
+                                        : post === null
+                                            ? navigate("/createPost")
+                                            : getTodaysPost(user)
+                                                .then(res => navigate(`/updatePost/${res.id}`))
+                                }}
                                 className="get-started-button"
                             >
                                 Get started!
@@ -38,7 +48,7 @@ export default function HomePage() {
                 </Container>
             </Container>
 
-            <Container className="why-moodily"  data-aos="zoom-in">
+            <Container className="why-moodily" data-aos="zoom-in" data-aos-once="true">
                 <div className="divider"></div>
                 <Typography variant="h4" className="section-title">
                     Why Moodily?
@@ -46,7 +56,7 @@ export default function HomePage() {
                 <div className="divider"></div>
                 <div>
                     <div className="feature-row">
-                        <div className="feature-left" data-aos="fade-right">
+                        <div className="feature-left" data-aos="fade-right" data-aos-once="true">
                             <span className="home-icons">🎈 </span>
                             <strong> Daily Fragmentation Begone</strong>
                             <p>Say goodbye to the fragmentation of your thoughts and emotions!
@@ -108,20 +118,21 @@ export default function HomePage() {
                             <span className="home-icons"> 📈 </span>
                             <strong>Track Progress & Achievements</strong>
                             <p>Celebrate your victories, no matter how small, and see how far you&rsquo;ve come.
-                                Moodily&rsquo;s tracking features allow you to visualize your personal growth journey and
+                                Moodily&rsquo;s tracking features allow you to visualize your personal growth journey
+                                and
                                 cherish your accomplishments.</p>
                         </div>
                     </div>
                 </div>
             </Container>
 
-            <Container className="how-it-works"  data-aos="zoom-in">
-                <div className="divider" ></div>
+            <Container className="how-it-works" data-aos="zoom-in" data-aos-once="true">
+                <div className="divider"></div>
                 <Typography variant="h4" className="section-title how-it-work">
                     <span>How it works: </span>
                 </Typography>
                 <div className="divider"></div>
-                <div className="section section-list" data-aos="zoom-in"  >
+                <div className="section section-list" data-aos="zoom-in" data-aos-once="true">
                     <li>
                         Log In: Sign up and create your Moodily account. It&rsquo;s quick and easy.
                     </li>
