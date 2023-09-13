@@ -1,7 +1,7 @@
 import SpotifyPlayer from 'react-spotify-web-playback';
 import {useEffect, useState} from "react";
 
-export const Player = ({accessToken, trackUri}) => {
+export const SongPlayer = ({accessToken, trackUri}) => {
     const [play, setPlay] = useState(false);
 
     useEffect(() => {
