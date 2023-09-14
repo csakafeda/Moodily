@@ -15,6 +15,10 @@ export default defineConfig({
         target: "http://localhost:8080",
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      "/spotify": {
+        target: "https://moodliy-spotify-auth-git-main-csakafeda.vercel.app",
+        rewrite: (path) => path.replace(/^\/spotify/, ""),
+      },
     },
   },
 })
