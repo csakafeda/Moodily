@@ -17,6 +17,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
     useEffect(() => {
         handleMusicChange(selected);
     }, [selected]);
+
     const handleRateChange = (e) => setRate(e.target.value);
     const handleTextChange = (e) => setText(e.target.value);
     const handleMusicChange = () => {
@@ -30,7 +31,7 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        return onSave({"rate": rate, "text": text, "music": music.songUrl, "picture": picture});
+        return onSave({"rate": rate, "text": text, "music": music.uri, "picture": picture});
     };
 
     return (
@@ -71,7 +72,8 @@ export default function MoodForm({postToUpdate, onSave, error, onCancel}) {
                 <Typography>Which music represent your day?</Typography>
                 {
                     selected &&
-                    <div>Selected music:
+                    <div>
+                        Selected music:
                         <a href={selected.songUrl}>{musicDisplayer(selected)}</a>
                     </div>
                 }

@@ -43,13 +43,18 @@ export const MoodCard = ({mood}) => {
                     >
                         Music: {mood.moodMusic}
                     </Typography>
-                    <Typography
-                        component="div"
-                        variant="subtitle1"
-                        sx={{marginBottom: "0.25rem"}}
-                    >
-                        Picture: {mood.moodPicture}
-                    </Typography>
+                    {
+                        /*
+                       <Typography
+                          component="div"
+                          variant="subtitle1"
+                          sx={{marginBottom: "0.25rem"}}
+                      >
+                          Picture: {mood.moodPicture}
+                      </Typography>
+                      */
+                    }
+
                 </CardContent>
                 <Button sx={{fontWeight: "bold"}}
                         onClick={() => {

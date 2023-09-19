@@ -12,7 +12,10 @@ export default function ProfilePage() {
     useEffect(() => {
         setLoading(true);
         getAllPost()
-            .then((res) => setData(res))
+            .then((res) => {
+                setData(res.sort((a,b) =>
+                    (a.moodDate > b.moodDate) ? 1 : ((b.moodDate > a.moodDate) ? -1 : 0)));
+            })
             .finally(() => setLoading(false));
     }, []);
 
@@ -28,7 +31,7 @@ export default function ProfilePage() {
                         ? <div style={{paddingTop: "10vh", fontSize: "4vh", color: "red"}}>
                             You have not posted yet.
                         </div>
-                        : data.map((mood) => (<MoodCard key={mood.id} mood={mood}/>))
+                        : data.reverse().map((mood) => (<MoodCard key={mood.id} mood={mood}/>))
                     }
                 </Container>
             }

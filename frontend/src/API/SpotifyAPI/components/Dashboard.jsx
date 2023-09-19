@@ -58,7 +58,7 @@ export const Dashboard = ({setSelected, code}) => {
             style={{
                 display: "flex",
                 flexDirection: "column",
-                height: "100vh",
+                height: "50vh",
                 alignItems: "center",
                 backgroundColor: "#2b835a",
                 padding: "20px",
